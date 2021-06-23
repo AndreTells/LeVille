@@ -19,6 +19,13 @@ public class CellController implements IActor{
 	@Override
 	public void act(MouseEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println("yay");
+		
+		if(controller.GameWasOver()) {
+			System.out.println("yay");
+			return;
+		}
+		
 		controller.stats_view.setInfo("cell info: \n"+controller.board.getCellInfo(map_x, map_y));
 		
 		if(e.getButton() == MouseEvent.BUTTON3) {
@@ -54,6 +61,7 @@ public class CellController implements IActor{
 	}
 	@Override
 	public void act(MouseEvent e, boolean missed) {
+		
 		if(!missed) {
 			act(e);
 		}

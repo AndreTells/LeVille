@@ -12,6 +12,7 @@ import jogo.view.ui.IStats;
 
 public class TurnController implements IActor{
 	private IEventManager event_manager;
+	private boolean game_over;
 	protected IPlayerController player;
 	protected IBoardController board;
 	protected IStats stats_view;
@@ -24,6 +25,7 @@ public class TurnController implements IActor{
 		this.board = board;
 		this.stats_view = stats_view;
 		this.board_view_manager = board_view_manager;
+		game_over = false;
 	}
 	
 	public void act(MouseEvent e) {
@@ -33,10 +35,7 @@ public class TurnController implements IActor{
 			int [] modifier = board.getModifier();
 			player.addModifier(modifier);
 			
-			if(gameOver()) {
-				stats_view.setInfo("GAME OVER");
-			}
-			else {
+			if(!gameOver()){
 				
 				String description = event_manager.ExecuteRandomEvent();
 				IPopUpMenu menu = stats_view.createSubMenu("_event-popup",-0.99f,0.8f,description,new String[]{"ok"});
@@ -59,10 +58,15 @@ public class TurnController implements IActor{
 			return true;
 		}
 		if(modifier[0]<=0) {
+			game_over = true;
 			stats_view.setInfo("GAME OVER");
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean GameWasOver() {
+		return this.game_over;
 	}
 	
 	public void updataMap() {
