@@ -10,8 +10,8 @@ public class GLLabel extends GLElementLeaf{
 	//<TODO> Text bounding box
 	private String[] text;
 	
-	private final static float line_spacing = 0.05f;
-	private final int font = GLUT.BITMAP_HELVETICA_12;
+	private final static float line_spacing = 0.08f;
+	private final int font = GLUT.BITMAP_HELVETICA_18;
 	private GLUT glut;
 	
 	public GLLabel(String id,GLElementComposite parent,

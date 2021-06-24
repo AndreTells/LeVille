@@ -15,11 +15,11 @@ public class GLPopUpMenu extends GLElementComposite implements IPopUpMenu{
 			float pos_x, float pos_y, float width,
 			String[] button_text
 			) {
-		super(id, parent, pos_x, pos_y-(item_height*(button_text.length)+(button_text.length+1)*0.01f),
+		super(id, parent, pos_x, pos_y,
 				width, item_height*(button_text.length)+(button_text.length+1)*0.01f);
-		
+		GLRectangle backdrop = null;
+		backdrop = new GLRectangle(id+"_backdrop",this,0,0,width, item_height*(button_text.length)+0.02f,0.02f,new float[] {0.09f, 0.1f, 0.1f,0.95f});
 
-		GLRectangle backdrop = new GLRectangle(id+"_backdrop",this,0,0,width, item_height*(button_text.length)+0.02f,0.02f,new float[] {0.09f, 0.1f, 0.1f,0.95f});
 		
 		float y = item_height*(button_text.length-1)+0.01f;
 		items = new GLButton[button_text.length];
@@ -39,9 +39,12 @@ public class GLPopUpMenu extends GLElementComposite implements IPopUpMenu{
 			float pos_x, float pos_y,
 			String text,
 			String[] button_text) {
+
 		super(id, parent, pos_x, pos_y,
 				0, item_height*(button_text.length)+(button_text.length+1)*0.01f);
 				
+		
+		
 		GLLabel header = new GLLabel(id+"_header",this,
 				0.01f,item_height*(button_text.length)-0.02f,
 				text,new float[] {1,1,1,1});

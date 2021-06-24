@@ -19,11 +19,13 @@ public abstract class GLElementComponent{
 	protected float height;
 	
 	GLElementComponent(String id,GLElementComposite parent,float pos_x,float pos_y,float width,float height){
-		this.setPosition(pos_x, pos_y);
-		this.setDims(width, height);
 		
 		this.parent = parent;
 		this.setId(id);
+		
+		this.setPosition(pos_x, pos_y);
+		this.setDims(width, height);
+		
 	}
 	
 
@@ -42,15 +44,19 @@ public abstract class GLElementComponent{
 	}
 	
 	public void setPosition(float pos_x,float pos_y) throws PosicaoInvalida{
-        if(pos_x<-1 || pos_x>1){
+		this.pos_x = pos_x;
+		this.pos_y = pos_y;
+		
+		float[] abs_pos = this.getAbsolutePos();
+
+        if(abs_pos[0]<-1.0 || abs_pos[0]>1.0){
             throw new PosicaoInvalida("the x passed is outside the screen");
         }
-        if(pos_y<-1 || pos_y>1){
+        if(pos_y<-1.0 || pos_y>1.0){
             throw new PosicaoInvalida("the y passed is outside the screen");
         }
         
-		this.pos_x = pos_x;
-		this.pos_y = pos_y;
+		
 	}
 
 	public void setDims(float width,float height) throws DimensoesInvalidas{

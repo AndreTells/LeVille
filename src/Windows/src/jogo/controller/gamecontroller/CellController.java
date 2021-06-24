@@ -19,7 +19,6 @@ public class CellController implements IActor{
 	@Override
 	public void act(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("yay");
 		
 		if(controller.GameWasOver()) {
 			System.out.println("yay");
@@ -46,6 +45,7 @@ public class CellController implements IActor{
 
 			String[] possible_arr = new String[possible.size()];
 			possible.toArray(possible_arr);
+			
 			
 			IPopUpMenu menu = controller.stats_view.createSubMenu("_construct-popup",formated_x,
 					formated_y,0.2f,

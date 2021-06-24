@@ -12,7 +12,7 @@ public class EventManager implements IEventManager{
 	
 	public EventManager() {
 		events = new LinkedList<Event>();
-		String path =  System.getProperty("user.dir") + "\\..\\assets\\events\\";
+		String path =  System.getProperty("user.dir") + "\\assets\\events\\";
 		events.addAll(CityEvent.getEvents(path+"CityEvents.csv"));
 		//for(Event event: events) {
 		//	System.out.println(event);
