@@ -2,6 +2,9 @@ package jogo.view.ui;
 
 import com.jogamp.opengl.GL2;
 
+import jogo.exceptions.DimensoesInvalidas;
+import jogo.exceptions.IdInvalido;
+import jogo.exceptions.PosicaoInvalida;
 import jogo.view.mouse.IMouse;
 
 public abstract class GLElementComponent{
@@ -20,7 +23,7 @@ public abstract class GLElementComponent{
 		this.setDims(width, height);
 		
 		this.parent = parent;
-		this.id = id;
+		this.setId(id);
 	}
 	
 
@@ -30,12 +33,34 @@ public abstract class GLElementComponent{
 
 	abstract public void draw(GL2 gl);
 
-	public void setPosition(float pos_x,float pos_y) {
+	private void setId(String id) throws IdInvalido{
+        if(id == null){
+            throw new IdInvalido("the id is null");
+        }
+        
+		this.id = id;
+	}
+	
+	public void setPosition(float pos_x,float pos_y) throws PosicaoInvalida{
+        if(pos_x<-1 || pos_x>1){
+            throw new PosicaoInvalida("the x passed is outside the screen");
+        }
+        if(pos_y<-1 || pos_y>1){
+            throw new PosicaoInvalida("the y passed is outside the screen");
+        }
+        
 		this.pos_x = pos_x;
 		this.pos_y = pos_y;
 	}
 
-	public void setDims(float width,float height) {
+	public void setDims(float width,float height) throws DimensoesInvalidas{
+        if(width < 0){
+            throw new DimensoesInvalidas("the width passed has a negative value");
+        }
+        if(height < 0){
+            throw new DimensoesInvalidas("the height passed has a negative value");
+        }
+        
 		this.width = width;
 		this.height = height;
 	}

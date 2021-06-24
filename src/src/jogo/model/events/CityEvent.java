@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import jogo.exceptions.ArquivoEventosNaoEncontrado;
 import jogo.model.boardmodel.IBoardController;
 import jogo.model.boardmodel.IBoardEvent;
 
@@ -22,7 +23,12 @@ public class CityEvent extends Event{
 		return this.toString();
 	}
 	
-	public static List<Event> getEvents(String dataSource) {
+	public static List<Event> getEvents(String dataSource) throws ArquivoEventosNaoEncontrado{
+        if(dataSource == null){
+            throw new ArquivoEventosNaoEncontrado("file name is null");
+        }
+        
+		
 		try {
 			BufferedReader file = new BufferedReader(new FileReader(dataSource));	
 			String line = file.readLine();
@@ -41,8 +47,7 @@ public class CityEvent extends Event{
 			
 			return event_list;
 		} catch (IOException erro) {
-			erro.printStackTrace();
-			return null;
+			throw new ArquivoEventosNaoEncontrado("no file exists with that name");
 		}
 	}
 

@@ -14,6 +14,8 @@ import javax.imageio.ImageIO;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.math.Matrix4;
 
+import jogo.exceptions.ArquivoModeloNaoEncontrado;
+
 public class Obj3D {
 	private List<Face3D> faces;
 	private float[] aabb_min;
@@ -156,7 +158,11 @@ public class Obj3D {
 		}
 	}
 	
-	private void getObj() {
+	private void getObj() throws ArquivoModeloNaoEncontrado{
+        if(path == null){
+            throw new ArquivoModeloNaoEncontrado("file name is null");
+        }
+        
 		try {
 			BufferedReader file = new BufferedReader(new FileReader(path+name+".obj"));
 			String line = file.readLine();
@@ -177,7 +183,7 @@ public class Obj3D {
 			
 			file.close();
 		} catch (IOException erro) {
-			erro.printStackTrace();
+			throw new ArquivoModeloNaoEncontrado("no file exists with that name");
 		}
 	}
 	

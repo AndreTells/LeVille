@@ -3,6 +3,7 @@ package jogo.view.boardview3d;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
+import jogo.exceptions.ComponenteInvalido;
 import jogo.view.boardview3d.customobject.Obj3D;
 
 public class Game3DObjectManager {
@@ -22,8 +23,17 @@ public class Game3DObjectManager {
 		
 	}
 	
-	public static Obj3D getModel(String model) {
-		return models.get(model);
+	public static Obj3D getModel(String model) throws ComponenteInvalido{
+        if(model == null){
+            throw new ComponenteInvalido("the name passed is null");
+        }
+        Obj3D result  = models.get(model);
+        if(result == null){
+            throw new ComponenteInvalido("the name passed either is not a componente or is a compoente without a model");
+        }
+        
+        
+		return result;
 	}
-}
+}	
 	

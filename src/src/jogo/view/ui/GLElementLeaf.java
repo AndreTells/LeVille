@@ -1,5 +1,6 @@
 package jogo.view.ui;
 
+import jogo.exceptions.CorInvalida;
 import jogo.view.mouse.IActor;
 
 public abstract class GLElementLeaf extends GLElementComponent{
@@ -25,7 +26,16 @@ public abstract class GLElementLeaf extends GLElementComponent{
 		mouse.removeActionObserver(this.id);
 	}
 	
-	public void setColor(float[] color) {
+	public void setColor(float[] color) throws CorInvalida{
+        if(color.length!=4){
+            throw new CorInvalida("color vector doesnt have the correct dimensions");
+        }
+        for(int i=0;i<4;i++){
+            if(color[i]>1 || color[i]<0){
+                throw new CorInvalida("a value in the color vector is outside of the range [0,1]");
+            }
+        }
+        
 		this.color = color;
 	}
 	
