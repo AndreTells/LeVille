@@ -21,8 +21,7 @@ Para evitar tal, o jogador poderá escolher o que construir em cada espaço do m
 
 # Documentção dos Componentes
 # Diagramas
-## Diagrama Geral do Projeto
-<?????????>
+
 ## Diagrama Geral de Componentes
 ![Diagrama geral do Projeto](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-geral-do-projeto.jpg)
 
