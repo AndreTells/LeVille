@@ -11,10 +11,12 @@ Para evitar tal, o jogador poderá escolher o que construir em cada espaço do m
 - André Silva Telles - 165263
 
 ## Vídeos do Projeto
-<colocar vídeo de prévia do projeto>
+vídeo da primeira versão do projeto:<br>
 [![vídeo de prévia](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/imagem_video.png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/video%20de%20apresentacao-165263-andre%20silva%20telles%20(1).mp4)
+
 # Slides do Projeto
-![slides de prévia do projeto](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/Trabalho%20de%20MC322-Jogo-165263-andre%20silva%20telles%20(1).pdf)
+slides usados da primeira versão do projeto:<br>
+[![slides de prévia do projeto](https://github.com/AndreTells/LeVille/blob/main/images/imagem_apresentacao.png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/Trabalho%20de%20MC322-Jogo-165263-andre%20silva%20telles%20(1).pdf)
 
 ## Slides de Prévia
 <colocar slides de prévia do projeto>
