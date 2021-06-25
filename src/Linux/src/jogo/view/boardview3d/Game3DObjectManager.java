@@ -10,7 +10,7 @@ public class Game3DObjectManager {
 	private static Dictionary<String,Obj3D> models;
 	public static void loadModels() {
 		models = new Hashtable<String,Obj3D>();
-		
+			
 		models.put("City", new Obj3D("City_1"));
 		models.put("Forest", new Obj3D("Forest_1"));
 		models.put("Mountain",  new Obj3D("Mountain_1"));
@@ -18,8 +18,8 @@ public class Game3DObjectManager {
 		models.put("Grass",  new Obj3D("Grass_1"));
 		models.put("LumberMill", new Obj3D("LumberMill_1"));
 		models.put("Farm", new Obj3D("Farm_1"));
-		models.put("Castle", new Obj3D("Castle_1"));
 		models.put("PreserveForest", new Obj3D("PreserveForest_1"));
+		models.put("Castle", new Obj3D("castle_1"));
 		
 	}
 	

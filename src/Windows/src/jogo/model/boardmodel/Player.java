@@ -57,6 +57,9 @@ public class Player implements IPlayerController{
 	public void addModifier(int modifier[]) {
 		food += modifier[0];
 		production += modifier[1];
+		if(production < 0) {
+			production =0;
+		}
 		population_limit += modifier[2];
 		modifier[2] = 0;
 		while(food >= food_target) {
