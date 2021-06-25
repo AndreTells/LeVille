@@ -56,25 +56,11 @@ Tem a função de apresentar o UI, parte em 2D, e o tabuleiro, parte em 3D para 
 ![Screen](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-screen.jpg)
 
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.view.screen.BoardManager
-Autores | André Silva Telles
-Interfaces | IBoardModelBuilder
-
-
-item | detalhamento
------ | -----
-Classe | jogo.view.screen.GameCanvas
-Autores | André Silva Telles
-Interfaces | GLEventListener
-
-item | detalhamento
------ | -----
-Classe | jogo.view.screen.GameFrame
-Autores | André Silva Telles
-Interfaces | JFrame
-
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.view.screen.ScreenManager | André Silva Telles | IScreenManager
+jogo.view.screen.GameCanvas | André Silva Telles | GLEventListener
+jogo.view.screen.GameFrame | André Silva Telles | JFrame
 
 ### Interfaces
 ![Screen-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-screen.jpg)
@@ -99,35 +85,17 @@ Resposável por armazenar como cada celula é apresentada para o usuário. Contr
 ![BoardView3D](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-boardview3d.jpg)
 
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.BoardViewManager
-Autores | André Silva Telles
-Interfaces | IBoard3DManager
-
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.CellView
-Autores | André Silva Telles
-Interfaces | ICellViewController
-
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.RayPicker
-Autores | André Silva Telles
-Interfaces | IMouseObserver
-
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.camera.CameraDraggObserver
-Autores | André Silva Telles
-Interfaces | IMouseObserver
-
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.camera.CameraMotionObserver
-Autores | André Silva Telles
-Interfaces | IMouseObserver
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.view.boardview3d.BoardViewManager | André Silva Telles | IBoard3DManager
+jogo.view.boardview3d.CellView | André Silva Telles | ICellViewController
+jogo.view.boardview3d.RayPicker | André Silva Telles | IMouseObserver
+jogo.view.boardview3d.Game3DObjectManager | André Silva Telles | N/A
+jogo.view.boardview3d.camera.GLCamera | André Silva Telles | N/A
+jogo.view.boardview3d.camera.CameraDraggObserver | André Silva Telles | IMouseObserver
+jogo.view.boardview3d.camera.CameraMotionObserver | André Silva Telles | IMouseObserver
+jogo.view.boardview3d.customobject.Obj3D | André Silva Telles | N/A
+jogo.view.boardview3d.customobject.Face3D | André Silva Telles | N/A
 
 
 ### Interfaces
@@ -150,12 +118,11 @@ e as folhas foram:
 
 O método principal deste é o _draw(GL2 gl)_. Este expressa como desenhar os elementos na tela
 ![UI](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-ui.jpg)
+
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.view.ui.UIManager
-Autores | André Silva Telles
-Interfaces | IUIManager
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.view.ui.UIManager | André Silva Telles | IUIManager
 
 item | detalhamento
 ----- | -----
