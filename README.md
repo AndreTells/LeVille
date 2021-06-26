@@ -123,28 +123,19 @@ O método principal deste é o _draw(GL2 gl)_. Este expressa como desenhar os el
 Classe | autor | Interfaces
 ----- | ----- | -----
 jogo.view.ui.UIManager | André Silva Telles | IUIManager
-
-item | detalhamento
------ | -----
-Classe | jogo.view.ui.UI
-Autores | André Silva Telles
-Interfaces | IStats
-
-item | detalhamento
------ | -----
-Classe | jogo.view.ui.composite.GLContainer
-Autores | André Silva Telles
-Interfaces | IContainer 
-
-item | detalhamento
------ | -----
-Classe | jogo.view.ui.composite.GLPopUpMenu
-Autores | André Silva Telles
-Interfaces | IPopUpMenu 
+jogo.view.ui.UI | André Silva Telles | IStats
+jogo.view.ui.GLElementLeaf | André Silva Telles | N/A
+jogo.view.ui.GLElementComposite | André Silva Telles | N/A
+jogo.view.ui.GLElementComponent | André Silva Telles | N/A
+jogo.view.ui.GL2DObserver | André Silva Telles | N/A
+jogo.view.ui.leaf.GLLabel | André Silva Telles | N/A
+jogo.view.ui.leaf.GLRectangle | André Silva Telles | N/A
+jogo.view.ui.composite.GLContainer | André Silva Telles | IContainer
+jogo.view.ui.composite.GLPopUpMenu | André Silva Telles | IPopUpMenu
+jogo.view.ui.composite.GLButton | André Silva Telles | N/A
 
 ### Interfaces
 ![BoardView3D-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-ui.jpg)
-
 
 
 ## Componente Mouse 
@@ -183,30 +174,12 @@ responsável por executar as ações requisitadas pelo usuário através do mous
 ![GameController](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-gamecontroller.jpg)
 
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.controller.gamecontroller.CellController
-Autores | André Silva Telles
-Interfaces | IActor
-
-item | detalhamento
------ | -----
-Classe | jogo.controller.gamecontroller.ConstructPopUpController
-Autores | André Silva Telles
-Interfaces | IActor
-
-item | detalhamento
------ | -----
-Classe | jogo.controller.gamecontroller.EventPopUpController
-Autores | André Silva Telles
-Interfaces | IActor
-
-item | detalhamento
------ | -----
-Classe | jogo.controller.gamecontroller.TurnController
-Autores | André Silva Telles
-Interfaces | IActor
-
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.controller.gamecontroller.CellController | André Silva Telles | IActor
+jogo.controller.gamecontroller.ConstructPopUpController | André Silva Telles | IActor
+jogo.controller.gamecontroller.EventPopUpController | André Silva Telles | IActor
+jogo.controller.gamecontroller.TurnController | André Silva Telles | IActor
 
 
 ### Interfaces
@@ -230,24 +203,25 @@ responsável por guardar as informações do jogador e do tabuleiro, por exemplo
 ![BoardModel](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-BoardModel.jpg)
 
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.model.boardmodel.BoardManager
-Autores | André Silva Telles
-Interfaces | IBoardModelBuilder
-
-
-item | detalhamento
------ | -----
-Classe | jogo.model.boardmodel.Player
-Autores | André Silva Telles
-Interfaces | IPlayerController
-
-item | detalhamento
------ | -----
-Classe | jogo.model.boardmodel.BoardModel
-Autores | André Silva Telles
-Interfaces | IBoardEvent<br> IBoardController
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.model.boardmodel.BoardManager | André Silva Telles | IBoardModelBuilder
+jogo.model.boardmodel.CellModel | André Silva Telles | N/A
+jogo.model.boardmodel.Player | André Silva Telles | IPlayerController
+jogo.model.boardmodel.BoardModel | André Silva Telles | IBoardEvent<br> IBoardController
+jogo.model.boardmodel.mapgenerator.MapGenerator | André Silva Telles | N/A
+jogo.model.boardmodel.mapgenerator.ImprovedNoise | André Silva Telles | N/A
+jogo.model.boardmodel.components.Castle | André Silva Telles | N/A
+jogo.model.boardmodel.components.City | André Silva Telles | N/A
+jogo.model.boardmodel.components.Component | André Silva Telles | N/A
+jogo.model.boardmodel.components.ConstructableComponent | André Silva Telles | N/A
+jogo.model.boardmodel.components.Farm | André Silva Telles | N/A
+jogo.model.boardmodel.components.Forest | André Silva Telles | N/A
+jogo.model.boardmodel.components.Grass | André Silva Telles | N/A
+jogo.model.boardmodel.components.LumberMill | André Silva Telles | N/A
+jogo.model.boardmodel.components.Mountain | André Silva Telles | N/A
+jogo.model.boardmodel.components.PreserveForest | André Silva Telles | N/A
+jogo.model.boardmodel.components.Water | André Silva Telles | N/A
 
 ### Interfaces
 ![BoardModel-Interfaces-1](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-BoardModel(parte-1).jpg)
@@ -268,16 +242,14 @@ responsável por ler e executar eventos aleatórios no tabuleiro
 ![Events](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-events.jpg)
 
 
-item | detalhamento
------ | -----
-Classe | jogo.model.events.EventManager
-Autores | André Silva Telles
-Interfaces | IEventManager
+**Ficha Técnica**
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.model.events.EventManager | André Silva Telles | IEventManager
+jogo.model.events.Event | André Silva Telles | N/A
+jogo.model.events.CityEvent | André Silva Telles | N/A
 
 ![Events-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-Events.jpg)
-
-
-
 
 
 
