@@ -12,14 +12,14 @@ Para evitar tal, o jogador poderá escolher o que construir em cada espaço do m
 
 ## Vídeos do Projeto
 vídeo da primeira versão do projeto:<br>
-[![vídeo de prévia](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/imagem_video.png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/video%20de%20apresentacao-165263-andre%20silva%20telles%20(1).mp4)
+[![vídeo de prévia](https://github.com/AndreTells/LeVille/blob/main/images/imagem_video(1).png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/video%20de%20apresentacao-165263-andre%20silva%20telles%20(1).mp4)
+
+vídeo da versão final do projeto
+[![vídeo final](https://github.com/AndreTells/LeVille/blob/main/images/imagem_video(2).png)](https://github.com/AndreTells/LeVille/blob/main/images/Video%20de%20apresentacao(versao%20final)-165263-andresilvatelles.mp4)
 
 # Slides do Projeto
 slides usados da primeira versão do projeto:<br>
 [![slides de prévia do projeto](https://github.com/AndreTells/LeVille/blob/main/images/imagem_apresentacao.png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/Trabalho%20de%20MC322-Jogo-165263-andre%20silva%20telles%20(1).pdf)
-
-## Slides de Prévia
-<colocar slides de prévia do projeto>
 
 # Documentção dos Componentes
 # Diagramas
