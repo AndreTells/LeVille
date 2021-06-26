@@ -567,12 +567,124 @@ getCellPicker | retorna o elemento que seleciona as celulas tri-dimensionais apr
 public interface ICellViewController {
 	public void setObj(String obj_name);
 }
-
 ~~~
 Método | Objetivo
 -------| --------
 setObj | muda o modelo 3D que será apresentado ao jogador por esta celula
 
+
+### Interface IEventManager
+
+~~~java 
+public interface IEventManager {
+	
+	public String ExecuteRandomEvent();
+	
+	public void setBoard(IBoardEvent board);
+	
+}
+~~~
+Método | Objetivo
+-------| --------
+ExecuteRandomEvent | executa um evento aleatório sobre o tabuleiro
+setBoard | conecta o Gerente de eventos com o tabuleiro que este afetará
+
+### Interface IBoardEvent
+
+~~~java 
+public interface IBoardEvent {
+	public void addModifier(int external_modifier[]);
+}
+~~~
+Método | Objetivo
+-------| --------
+addModifier | atualiza o vetor de modificadores do tabuleiro com modificadores externos(outro vetor)
+
+
+### Interface IBoardController
+
+~~~java 
+public interface IBoardController {
+	public int getMapLength();
+	
+	public int getMapHeight();
+	
+	public String getCellHighestComponents(int x,int y);
+	
+	public int[] getModifier();
+	
+	public String getCellInfo(int x, int y);
+	
+	public List<String> getPossibleActions(int x,int y);
+	
+	public void addModifier(int[] modifier);
+
+	public boolean isClaimed(int x,int y);
+}
+~~~
+Método | Objetivo
+-------| --------
+getMapLength | retorna a largura do tabuleiro
+getMapHeight | retorna a altura do tabuleiro
+getCellHighestComponents | retorna o nome do componente com rank mais alto na celula especificada
+getModifier | retorna o vetor de modificadores do tabuleiro
+getCellInfo | retorna uma string com informções relevantes ao jogador sobre a celula especificada
+getPossibleActions | retorna que ações podem ser realizadas sobre a celula especificada
+addModifier | atualiza o vetor de modificadores do tabuleiro com modificadores externos(outro vetor)
+isClaimed | checa se a celula especificada pertence ao jogador
+
+
+### Interface IBoardModelBuilder
+
+~~~java 
+public interface IBoardModelBuilder {
+	public Player getPlayer();
+	
+	public IBoardController getBoardController();
+	
+	public IBoardEvent getBoardEvent();
+}
+~~~
+Método | Objetivo
+-------| --------
+getPlayer | retorna o objeto que representa o jogador
+getBoardController | retorna o obeto que representa o tabuleiro na forma de um IBoardController para restringir o que pode ser feito com esse
+getBoardEvent | retorna o obeto que representa o tabuleiro na forma de um IBoardEvent para restringir o que pode ser feito com esse
+
+
+### Interface IBoardController
+
+~~~java 
+public interface IPlayerController {
+	
+	public int getPopulationValue();
+	
+	public int getPopulationLimitValue();
+	
+	public int getProductionValue();
+	
+	public int getFoodValue();
+	
+	public int getFoodTargetValue();
+	
+	public void addModifier(int modifier[]);
+	
+	public void claim(int x,int y);
+
+	public  void constructComponent(String comp_name,int x, int y);
+}
+
+~~~
+Método | Objetivo
+-------| --------
+getPopulationValue | retorna quanto de população o jogador possui
+getPopulationLimitValue | retorna quantas "casas" o jogador possui
+getProductionValue | retorna quanto de produção o jogador possui
+getFoodValue | retorna quanto de comida o jogador possui
+getFoodTargetValue | retorna qual a quantidade de comida o jogador deve atingir para ganhar mais população
+addModifier | adiciona um modificador aos atributos do jogador
+claim | toma a celula especificada para o jogador
+constructComponent | constroi um componente na celula especificada se o jogador possuir produção o bastante
 
 
 # Plano de Exceções
