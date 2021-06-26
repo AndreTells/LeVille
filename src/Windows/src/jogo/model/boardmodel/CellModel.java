@@ -87,7 +87,6 @@ public class CellModel {
 				board.addModifier(modifier);
 			}
 			else {
-				this.addModifiers(comp.getModifier());
 				comp.setCell(this);
 			}
 		}		
