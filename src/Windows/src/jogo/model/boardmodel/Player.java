@@ -46,8 +46,10 @@ public class Player implements IPlayerController{
 	}
 	
 	public void claim(int x,int y) {
-		board.claim(x,y);
-		useProduction(ConstructCostEnum.CLAIM.getCost());		
+		if(production>=10) {
+			board.claim(x,y);
+			useProduction(ConstructCostEnum.CLAIM.getCost());		
+		}	
 	}
 	
 	public void useProduction(int value) {

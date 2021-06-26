@@ -21,7 +21,6 @@ public class CellController implements IActor{
 		// TODO Auto-generated method stub
 		
 		if(controller.GameWasOver()) {
-			System.out.println("yay");
 			return;
 		}
 		
@@ -48,7 +47,7 @@ public class CellController implements IActor{
 			
 			
 			IPopUpMenu menu = controller.stats_view.createSubMenu("_construct-popup",formated_x,
-					formated_y,0.2f,
+					formated_y,0.3f,
 					possible_arr);
 			
 			ConstructPopUpController[] menu_item_controllers = new ConstructPopUpController[possible.size()]; 
