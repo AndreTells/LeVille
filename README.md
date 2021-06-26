@@ -400,6 +400,180 @@ Método | Objetivo
 -------| --------
 act | realiza uma ação baseada no MouseEvent e se a condição para realizar a ação foi cumprida ou não
 
+### Interface IUIManager
+
+~~~java 
+public interface IUIManager {
+	public IContainer getContainer();
+	
+	public IStats getUI();
+	
+	public void setMouse(IMouse mouse);
+}
+~~~
+Método | Objetivo
+-------| --------
+getContainer | Retorna o elemento que contem o UI e, como consequencia, todos outros elementos 2D
+getUI | retorna um elemento UI para que seja possível mudar textos da tela dinamicamente
+setMouse | indica qual mouse os elementos 2D observaram para clicks na tela
+
+### Interface IStats
+
+~~~java 
+public interface IStats {
+	public void setPopulation(String population_text);
+	
+	public void setProduction(String production_text);
+	
+	public void setFood(String food_text);
+
+	public void setInfo(String info_text);
+	
+	public IPopUpMenu createSubMenu(String id,float pos_x, float pos_y,float width, String[] items);
+	
+	public IPopUpMenu createSubMenu(String id,float pos_x, float pos_y,String text, String[] items);
+
+	public void setTurnListener(IActor controller);
+	
+	public void disposeChild(String id);
+}
+~~~
+Método | Objetivo
+-------| --------
+setPopulation | atualiza o texto referente a população na tela
+setProduction | atualiza o texto referente a produção na tela
+setFood | atualiza o texto referente a comida na tela
+setInfo |atualiza o texto referente a informação na tela
+createSubMenu | cria um menu pop up que será apresentado na tela(disponibilizando uma forma de adicionar observers aos botões de tal menu)
+setTurnListener | indica o que o botão de proximo turn ira fazer quando clicado
+disposeChild | deleta um elemento do UI
+
+### Interface IPopUpMenu
+
+~~~java 
+public interface IPopUpMenu {
+	public void checkItem();
+	
+	public boolean allChecked();
+	
+	public void setActionObservers(IActor actors[]);
+	
+}
+~~~
+Método | Objetivo
+-------| --------
+checkItem | marca que o observer de um item do menu pop up foi checou se o mouse cumpriu seu requisito para ser ativado
+allChecked | informa se os observers de todos os items do menu pop up já realizaram seus testes para o ultimo evento do mouse
+setActionObservers | indica o que cada botão do menu pop up deve fazer quando acionado
+
+
+### Interface IContainer
+
+~~~java 
+public interface IContainer {
+	public void draw(GL2 gl);
+	public void setDims(float width,float height);
+}
+
+~~~
+Método | Objetivo
+-------| --------
+draw | "desenha" todos elementos contidos no container na tela
+setDims | informa o container quais as dimensões da tela que ele será desenhado(o JFrame/GLCanvas)
+
+### Interface IScreenManager
+
+~~~java 
+public interface IScreenManager {
+	public void set2D(IContainer container);
+	
+	public void set3D(IBoard3DManager board);
+	
+	public void setMouse(IMouse mouse);
+}
+~~~
+Método | Objetivo
+-------| --------
+set2D | conecta os elementos 2D a tela
+set3D | conecta os elementos 3D a tela
+setMouse | conecta o mouse a tela
+
+
+### Interface IMouse
+
+~~~java 
+public interface IMouse
+	extends MouseListener,MouseMotionListener,
+		IRMouseObserver,IRemoveMouseObserver{
+	public void addActionObservers(String id ,IMouseObserver observer);
+	
+	public void removeActionObserver(String id);
+	 
+	public void addMotionObservers(String id ,IMouseObserver observer);
+	
+	public void removeMotionObserver(String id);
+	
+	public void addDraggObservers(String id ,IMouseObserver observer);
+	
+	public void removeDraggObserver(String id);
+}
+~~~
+Método | Objetivo
+-------| --------
+addActionObservers | adiciona um observer com id ao mouse, notificando este sempre que o mouse clicar em algo
+addMotionObservers | adiciona um observer com id ao mouse, notificando este sempre que o mouse se mover
+addDraggObservers  | adiciona um observer com id ao mouse, notificando este sempre que o mouse arrastar algo
+removeActionObserver | remove um observer de ações com id do mouse
+removeMotionObserver | remove um observer de movimentos com id do mouse
+removeDraggObserver  | remove um observer de arrastar com id do mouse
+
+
+
+### Interface IBoard3DManager
+
+~~~java 
+public interface IBoard3DManager {
+	public void positionCamera(GL2 gl, GLU glu);
+	
+	public void drawBoard(GL2 gl);
+	
+	public void updatePicker(Matrix4 i_view_matrix , Matrix4 i_projection_matrix);
+	
+	public ICellViewController getCell(int i, int j);
+	
+	public void setCellActionObserver(int i,int j,CellController controller);
+	
+	public IMouseObserver getCameraDraggObserver();
+	
+	public IMouseObserver getCameraMotionObserver();
+	
+	public IMouseObserver getCellPicker();
+}
+~~~
+Método | Objetivo
+-------| --------
+positionCamera | posiciona a camera do jogador para renderizar a cena do jogo 
+drawBoard | desenha o tabuleiro no espaço tridimensional da tela que esta sendo apresentado ao jogador
+updatePicker | passa as matrizes atuais do opengl, permitindo o que o picker se localize
+getCell | retorna um objeto que representa o elemento visível de uma celula
+setCellActionObserver | permite que uma celula seja clicada pelo jogador, passando o que deve ocorrer quando esta for clicada
+getCameraDraggObserver | retorna o elemento que move a camera
+getCameraMotionObserver | retorna o elemento que auxilia a camera ser movida
+getCellPicker | retorna o elemento que seleciona as celulas tri-dimensionais apresentadas ao jogador
+
+### Interface ICellViewController
+
+~~~java 
+public interface ICellViewController {
+	public void setObj(String obj_name);
+}
+
+~~~
+Método | Objetivo
+-------| --------
+setObj | muda o modelo 3D que será apresentado ao jogador por esta celula
+
+
 
 # Plano de Exceções
 ## Diagrama da hierarquia de exceções
