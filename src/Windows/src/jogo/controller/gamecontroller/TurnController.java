@@ -31,15 +31,32 @@ public class TurnController implements IActor{
 	public void act(MouseEvent e) {
 		
 		if(!gameOver()) {
-
 			int [] modifier = board.getModifier();
+			
 			player.addModifier(modifier);
+			
+			int population = player.getPopulationValue();
+			int population_limit = player.getPopulationLimitValue();
+			int food = player.getFoodValue();
+			int food_target = player.getFoodTargetValue();
 			
 			if(!gameOver()){
 				
 				String description = event_manager.ExecuteRandomEvent();
 				IPopUpMenu menu = stats_view.createSubMenu("_event-popup",-0.99f,0.8f,description,new String[]{"ok"});
+				String info_help_text = "";
+				if(population == population_limit) {
+					info_help_text += " -you are close to the\n   population limit\n";
+				}
+				if(modifier[1] <= 20) {
+					info_help_text += " -you are not getting\n   much production\n";
+				}
+				if(food + modifier[0] >= food_target) {
+					info_help_text += " -you are close to\n   getting more \n   population\n";
+				}
 				
+				stats_view.setInfo(info_help_text);
+						
 				EventPopUpController pop_up_controller = new EventPopUpController(this);
 				menu.setActionObservers(new IActor[] {pop_up_controller});
 				
@@ -59,8 +76,13 @@ public class TurnController implements IActor{
 		}
 		if(modifier[0]<=0) {
 			game_over = true;
-			stats_view.setInfo("GAME OVER");
+			stats_view.setInfo("GAME LOST \nBETTER LUCK NEXT \nTIME");
 			return true;
+		}
+		
+		if(population >=20) {
+			game_over = true;
+			stats_view.setInfo("GAME WON YAY!!!!!!");
 		}
 		return false;
 	}
