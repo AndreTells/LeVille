@@ -83,6 +83,7 @@ public class TurnController implements IActor{
 		if(population >=20) {
 			game_over = true;
 			stats_view.setInfo("GAME WON YAY!!!!!!");
+			return true;
 		}
 		return false;
 	}
