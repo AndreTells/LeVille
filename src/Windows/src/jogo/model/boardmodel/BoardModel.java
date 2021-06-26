@@ -5,19 +5,15 @@ import java.util.List;
 import jogo.model.boardmodel.components.Castle;
 import jogo.model.boardmodel.components.City;
 import jogo.model.boardmodel.components.Component;
-import jogo.model.boardmodel.components.ConstructCostEnum;
 import jogo.model.boardmodel.components.ConstructableComponent;
 import jogo.model.boardmodel.components.Farm;
 import jogo.model.boardmodel.components.LumberMill;
 import jogo.model.boardmodel.components.PreserveForest;
 import jogo.model.boardmodel.mapgenerator.MapGenerator;
-import jogo.model.events.EventManager;
 
-public class BoardModel implements IBoardEvent, IBoardController{
-	//private Player player;
+public class BoardModel implements IBoardEvent, IBoardController, IBoardPlayer{
 	private CellModel map[][];
 	private int modifier[];
-	private int turn;
 	/*
 	 *modifier
 	 0-> food
@@ -27,7 +23,6 @@ public class BoardModel implements IBoardEvent, IBoardController{
 	
 	public BoardModel() {
 		create(10,10);
-		turn = 0;
 		MapGenerator map_generator = new MapGenerator(this);
 		map_generator.generateRandomMap();
 	}
@@ -46,11 +41,43 @@ public class BoardModel implements IBoardEvent, IBoardController{
 		}
 	}
 	
-	public void addComponent(Component comp,int x,int y) {
+	public boolean addComponent(String comp_name,int x,int y,int player_production) {
+		
+		//trhow exeption
+		ConstructableComponent comp = null;
+		if(comp_name.equals("City")) {
+			comp = new City();
+		}
+		else if(comp_name.equals("Farm")) {
+			comp = new Farm();
+		}
+		else if(comp_name.equals("LumberMill")) {
+			comp = new LumberMill();
+		}
+		else if(comp_name.equals("Castle")) {
+			comp = new Castle();
+		}
+		else if(comp_name.equals("PreserveForest")) {
+			comp = new PreserveForest();
+		}
+				
+		else{
+			return false;
+		}
+		if(comp.construct(player_production)) {
+			map[y][x].addComponent(comp);
+			return true;
+		}
+		
+		return false;
+	}
+	public boolean addComponent(Component comp,int x,int y) {
 		map[y][x].addComponent(comp);
+		return true;
 	}
 	
-	public void removeComponente(Class cls,int x,int y) {
+	
+	public void removeComponente(Class<?> cls,int x,int y) {
 		map[y][x].removeComponent(cls);
 	}
 
@@ -58,8 +85,6 @@ public class BoardModel implements IBoardEvent, IBoardController{
 		for(int i=0;i<modifier.length;i++) {
 			modifier[i] += external_modifier[i];
 		}
-
-		//System.out.println(modifier[0]+" "+modifier[1]+" "+modifier[2]);
 	}
 	
 	public void removeModifiers(int external_modifier[]) {
@@ -67,22 +92,17 @@ public class BoardModel implements IBoardEvent, IBoardController{
 			
 			modifier[i] -= external_modifier[i];
 		}
-		//System.out.println(modifier[0]+" "+modifier[1]+" "+modifier[2]);
 	}
 	
 	public boolean hasComponent(Class<?> cls, int x, int y) {
 		return map[y][x].hasComponent(cls);
 	}
-		
-	//public String runRandomEvent() {
-	//	return EventManager.ExecuteRandomEvent(this);
-	//}
 	
 	public boolean isClaimed(int x,int y) {
 		return map[y][x].isClaimed();
 	}
 	
-	protected void claim(int x,int y) {
+	public void claim(int x,int y) {
 		map[y][x].claim();
 	}
 	

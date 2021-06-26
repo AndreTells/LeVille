@@ -87,7 +87,8 @@ public class GLMouse implements IMouse {
 					selected_observer_rank = observer.getRank();
 				}
 				else if(rank == selected_observer_rank) {
-					//throw exception
+					return;
+					//TODO throw exception
 				}
 			}
 			

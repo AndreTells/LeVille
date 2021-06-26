@@ -3,7 +3,6 @@ package jogo.view.boardview3d;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-import jogo.exceptions.ComponenteInvalido;
 import jogo.view.boardview3d.customobject.Obj3D;
 
 public class Game3DObjectManager {

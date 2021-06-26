@@ -3,7 +3,6 @@ package jogo.model.events;
 import java.util.LinkedList;
 import java.util.List;
 
-import jogo.model.boardmodel.IBoardController;
 import jogo.model.boardmodel.IBoardEvent;
 
 public class EventManager implements IEventManager{
@@ -14,9 +13,6 @@ public class EventManager implements IEventManager{
 		events = new LinkedList<Event>();
 		String path =  System.getProperty("user.dir") + "\\assets\\events\\";
 		events.addAll(CityEvent.getEvents(path+"CityEvents.csv"));
-		//for(Event event: events) {
-		//	System.out.println(event);
-		//}
 	}
 	
 	public void setBoard(IBoardEvent board) {
@@ -25,7 +21,6 @@ public class EventManager implements IEventManager{
 	
 	public String ExecuteRandomEvent() {
 		int index = getRandomNumber(0,events.size());
-		//System.out.println(events.get(index));
 		return events.get(index).executeEvent(board);
 	}
 	

@@ -9,7 +9,6 @@ import jogo.model.boardmodel.components.Component;
 import jogo.model.boardmodel.components.Farm;
 import jogo.model.boardmodel.components.LumberMill;
 import jogo.model.boardmodel.components.PreserveForest;
-import jogo.model.boardmodel.components.Water;
 
 public class CellModel {
 	private BoardModel board;
@@ -92,7 +91,7 @@ public class CellModel {
 		}		
 	}
 	
-	public void removeComponent(Class cls) {
+	public void removeComponent(Class<?> cls) {
 		for(int i =0; i < components.size();i++) {
 			Component comp = components.get(i);
 			if(cls.isInstance(comp)) {
@@ -133,7 +132,7 @@ public class CellModel {
 		return top.getClass().getSimpleName();
 	}
 	
-	public boolean hasComponent(Class cls) {
+	public boolean hasComponent(Class<?> cls) {
 		for(Component comp: components) {
 			if(comp.getClass().equals(cls)) {
 				return true;
@@ -177,7 +176,7 @@ public class CellModel {
 		board.addModifier(modifier);
 	}
 	
-	public boolean adjacentHas(Class cls) {
+	public boolean adjacentHas(Class<?> cls) {
 		if(up!=null && up.hasComponent(cls)) {
 			return true;
 		}

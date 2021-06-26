@@ -1,7 +1,9 @@
-package jogo.exceptions;
+package jogo.view.ui;
 
 public class AtributoInvalido extends RuntimeException {
-	   public AtributoInvalido() {
+	private static final long serialVersionUID = -2103637942045892783L;
+
+	public AtributoInvalido() {
 	      super();
 	   }
 

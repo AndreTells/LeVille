@@ -1,7 +1,9 @@
-package jogo.exceptions;
+package jogo.view.ui;
 
 public class DimensoesInvalidas extends AtributoInvalido {
-	   public DimensoesInvalidas() {
+	private static final long serialVersionUID = -2274917488610034714L;
+
+	public DimensoesInvalidas() {
 	      super();
 	   }
 

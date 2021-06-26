@@ -26,23 +26,8 @@ public class GameCanvas implements GLEventListener {
 		Game3DObjectManager.loadModels();
 		
 		this.setUpCanvas(frame_width, frame_height);
-		
-		//this.mouse = new GLMouse(gc);
-		
-	   //	this.setUpCamera();
 	   	
-	   	//3d space
-	   //	setUpCellMatrix();
-	   	
-	   	//2d space
-	 	//GLElementComponent.setMouse(mouse);
-	   	
-	   	this.container_2d = new GLContainer("container",frame_width,frame_height);
-	   	
-	 //  	this.ui = new UI(container_2d);
-	   		   	
-	//   	this.setUpPicker();
-	   	//necessary for JOGL
+	   	this.container_2d = new GLContainer("container",frame_width,frame_height);	
 	   	gc.addGLEventListener( this );
 	   	
 	}

@@ -1,7 +1,9 @@
-package jogo.exceptions;
+package jogo.view.ui;
 
 public class IdInvalido extends AtributoInvalido {
-	   public IdInvalido() {
+	private static final long serialVersionUID = -951994377919097355L;
+
+	public IdInvalido() {
 	      super();
 	   }
 

@@ -27,7 +27,6 @@ public class MapGenerator {
 		for(int i=0; i < map_height;i++) {
 			for(int j=0; j < map_length;j++) {
 				double value = ImprovedNoise.noise(i, j, Math.random()+1);
-				//System.out.println(value);
 				if(value<limit) {
 					board.addComponent(new Grass(), j, i);
 				}
@@ -82,7 +81,6 @@ public class MapGenerator {
 					continue;
 				}
 				double value = ImprovedNoise.noise(i, j, Math.random()+1);
-				//System.out.println(value);
 				if(value>limit) {
 					board.addComponent(new Forest(), j, i);
 				}

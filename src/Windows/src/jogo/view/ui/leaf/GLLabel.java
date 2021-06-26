@@ -83,7 +83,6 @@ public class GLLabel extends GLElementLeaf{
 		for(String sentence: this.text) {
 			float sentence_width = glut.glutBitmapLength(font,sentence);
 			if(width < sentence_width) {
-				//System.out.println(sentence_width);
 				width = sentence_width;
 			}
 		}
