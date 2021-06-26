@@ -11,10 +11,12 @@ Para evitar tal, o jogador poderá escolher o que construir em cada espaço do m
 - André Silva Telles - 165263
 
 ## Vídeos do Projeto
-<colocar vídeo de prévia do projeto>
+vídeo da primeira versão do projeto:<br>
 [![vídeo de prévia](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/imagem_video.png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/video%20de%20apresentacao-165263-andre%20silva%20telles%20(1).mp4)
+
 # Slides do Projeto
-![slides de prévia do projeto](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/Trabalho%20de%20MC322-Jogo-165263-andre%20silva%20telles%20(1).pdf)
+slides usados da primeira versão do projeto:<br>
+[![slides de prévia do projeto](https://github.com/AndreTells/LeVille/blob/main/images/imagem_apresentacao.png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/Trabalho%20de%20MC322-Jogo-165263-andre%20silva%20telles%20(1).pdf)
 
 ## Slides de Prévia
 <colocar slides de prévia do projeto>
@@ -54,25 +56,11 @@ Tem a função de apresentar o UI, parte em 2D, e o tabuleiro, parte em 3D para 
 ![Screen](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-screen.jpg)
 
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.view.screen.BoardManager
-Autores | André Silva Telles
-Interfaces | IBoardModelBuilder
-
-
-item | detalhamento
------ | -----
-Classe | jogo.view.screen.GameCanvas
-Autores | André Silva Telles
-Interfaces | GLEventListener
-
-item | detalhamento
------ | -----
-Classe | jogo.view.screen.GameFrame
-Autores | André Silva Telles
-Interfaces | JFrame
-
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.view.screen.ScreenManager | André Silva Telles | IScreenManager
+jogo.view.screen.GameCanvas | André Silva Telles | GLEventListener
+jogo.view.screen.GameFrame | André Silva Telles | JFrame
 
 ### Interfaces
 ![Screen-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-screen.jpg)
@@ -97,35 +85,17 @@ Resposável por armazenar como cada celula é apresentada para o usuário. Contr
 ![BoardView3D](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-boardview3d.jpg)
 
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.BoardViewManager
-Autores | André Silva Telles
-Interfaces | IBoard3DManager
-
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.CellView
-Autores | André Silva Telles
-Interfaces | ICellViewController
-
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.RayPicker
-Autores | André Silva Telles
-Interfaces | IMouseObserver
-
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.camera.CameraDraggObserver
-Autores | André Silva Telles
-Interfaces | IMouseObserver
-
-item | detalhamento
------ | -----
-Classe | jogo.view.boardview3d.camera.CameraMotionObserver
-Autores | André Silva Telles
-Interfaces | IMouseObserver
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.view.boardview3d.BoardViewManager | André Silva Telles | IBoard3DManager
+jogo.view.boardview3d.CellView | André Silva Telles | ICellViewController
+jogo.view.boardview3d.RayPicker | André Silva Telles | IMouseObserver
+jogo.view.boardview3d.Game3DObjectManager | André Silva Telles | N/A
+jogo.view.boardview3d.camera.GLCamera | André Silva Telles | N/A
+jogo.view.boardview3d.camera.CameraDraggObserver | André Silva Telles | IMouseObserver
+jogo.view.boardview3d.camera.CameraMotionObserver | André Silva Telles | IMouseObserver
+jogo.view.boardview3d.customobject.Obj3D | André Silva Telles | N/A
+jogo.view.boardview3d.customobject.Face3D | André Silva Telles | N/A
 
 
 ### Interfaces
@@ -148,34 +118,24 @@ e as folhas foram:
 
 O método principal deste é o _draw(GL2 gl)_. Este expressa como desenhar os elementos na tela
 ![UI](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-ui.jpg)
+
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.view.ui.UIManager
-Autores | André Silva Telles
-Interfaces | IUIManager
-
-item | detalhamento
------ | -----
-Classe | jogo.view.ui.UI
-Autores | André Silva Telles
-Interfaces | IStats
-
-item | detalhamento
------ | -----
-Classe | jogo.view.ui.composite.GLContainer
-Autores | André Silva Telles
-Interfaces | IContainer 
-
-item | detalhamento
------ | -----
-Classe | jogo.view.ui.composite.GLPopUpMenu
-Autores | André Silva Telles
-Interfaces | IPopUpMenu 
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.view.ui.UIManager | André Silva Telles | IUIManager
+jogo.view.ui.UI | André Silva Telles | IStats
+jogo.view.ui.GLElementLeaf | André Silva Telles | N/A
+jogo.view.ui.GLElementComposite | André Silva Telles | N/A
+jogo.view.ui.GLElementComponent | André Silva Telles | N/A
+jogo.view.ui.GL2DObserver | André Silva Telles | N/A
+jogo.view.ui.leaf.GLLabel | André Silva Telles | N/A
+jogo.view.ui.leaf.GLRectangle | André Silva Telles | N/A
+jogo.view.ui.composite.GLContainer | André Silva Telles | IContainer
+jogo.view.ui.composite.GLPopUpMenu | André Silva Telles | IPopUpMenu
+jogo.view.ui.composite.GLButton | André Silva Telles | N/A
 
 ### Interfaces
 ![BoardView3D-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-ui.jpg)
-
 
 
 ## Componente Mouse 
@@ -214,30 +174,12 @@ responsável por executar as ações requisitadas pelo usuário através do mous
 ![GameController](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-gamecontroller.jpg)
 
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.controller.gamecontroller.CellController
-Autores | André Silva Telles
-Interfaces | IActor
-
-item | detalhamento
------ | -----
-Classe | jogo.controller.gamecontroller.ConstructPopUpController
-Autores | André Silva Telles
-Interfaces | IActor
-
-item | detalhamento
------ | -----
-Classe | jogo.controller.gamecontroller.EventPopUpController
-Autores | André Silva Telles
-Interfaces | IActor
-
-item | detalhamento
------ | -----
-Classe | jogo.controller.gamecontroller.TurnController
-Autores | André Silva Telles
-Interfaces | IActor
-
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.controller.gamecontroller.CellController | André Silva Telles | IActor
+jogo.controller.gamecontroller.ConstructPopUpController | André Silva Telles | IActor
+jogo.controller.gamecontroller.EventPopUpController | André Silva Telles | IActor
+jogo.controller.gamecontroller.TurnController | André Silva Telles | IActor
 
 
 ### Interfaces
@@ -261,24 +203,25 @@ responsável por guardar as informações do jogador e do tabuleiro, por exemplo
 ![BoardModel](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-BoardModel.jpg)
 
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.model.boardmodel.BoardManager
-Autores | André Silva Telles
-Interfaces | IBoardModelBuilder
-
-
-item | detalhamento
------ | -----
-Classe | jogo.model.boardmodel.Player
-Autores | André Silva Telles
-Interfaces | IPlayerController
-
-item | detalhamento
------ | -----
-Classe | jogo.model.boardmodel.BoardModel
-Autores | André Silva Telles
-Interfaces | IBoardEvent<br> IBoardController
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.model.boardmodel.BoardManager | André Silva Telles | IBoardModelBuilder
+jogo.model.boardmodel.CellModel | André Silva Telles | N/A
+jogo.model.boardmodel.Player | André Silva Telles | IPlayerController
+jogo.model.boardmodel.BoardModel | André Silva Telles | IBoardEvent<br> IBoardController
+jogo.model.boardmodel.mapgenerator.MapGenerator | André Silva Telles | N/A
+jogo.model.boardmodel.mapgenerator.ImprovedNoise | André Silva Telles | N/A
+jogo.model.boardmodel.components.Castle | André Silva Telles | N/A
+jogo.model.boardmodel.components.City | André Silva Telles | N/A
+jogo.model.boardmodel.components.Component | André Silva Telles | N/A
+jogo.model.boardmodel.components.ConstructableComponent | André Silva Telles | N/A
+jogo.model.boardmodel.components.Farm | André Silva Telles | N/A
+jogo.model.boardmodel.components.Forest | André Silva Telles | N/A
+jogo.model.boardmodel.components.Grass | André Silva Telles | N/A
+jogo.model.boardmodel.components.LumberMill | André Silva Telles | N/A
+jogo.model.boardmodel.components.Mountain | André Silva Telles | N/A
+jogo.model.boardmodel.components.PreserveForest | André Silva Telles | N/A
+jogo.model.boardmodel.components.Water | André Silva Telles | N/A
 
 ### Interfaces
 ![BoardModel-Interfaces-1](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-BoardModel(parte-1).jpg)
@@ -299,16 +242,14 @@ responsável por ler e executar eventos aleatórios no tabuleiro
 ![Events](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-events.jpg)
 
 
-item | detalhamento
------ | -----
-Classe | jogo.model.events.EventManager
-Autores | André Silva Telles
-Interfaces | IEventManager
+**Ficha Técnica**
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.model.events.EventManager | André Silva Telles | IEventManager
+jogo.model.events.Event | André Silva Telles | N/A
+jogo.model.events.CityEvent | André Silva Telles | N/A
 
 ![Events-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-Events.jpg)
-
-
-
 
 
 
@@ -458,6 +399,180 @@ public interface IActor {
 Método | Objetivo
 -------| --------
 act | realiza uma ação baseada no MouseEvent e se a condição para realizar a ação foi cumprida ou não
+
+### Interface IUIManager
+
+~~~java 
+public interface IUIManager {
+	public IContainer getContainer();
+	
+	public IStats getUI();
+	
+	public void setMouse(IMouse mouse);
+}
+~~~
+Método | Objetivo
+-------| --------
+getContainer | Retorna o elemento que contem o UI e, como consequencia, todos outros elementos 2D
+getUI | retorna um elemento UI para que seja possível mudar textos da tela dinamicamente
+setMouse | indica qual mouse os elementos 2D observaram para clicks na tela
+
+### Interface IStats
+
+~~~java 
+public interface IStats {
+	public void setPopulation(String population_text);
+	
+	public void setProduction(String production_text);
+	
+	public void setFood(String food_text);
+
+	public void setInfo(String info_text);
+	
+	public IPopUpMenu createSubMenu(String id,float pos_x, float pos_y,float width, String[] items);
+	
+	public IPopUpMenu createSubMenu(String id,float pos_x, float pos_y,String text, String[] items);
+
+	public void setTurnListener(IActor controller);
+	
+	public void disposeChild(String id);
+}
+~~~
+Método | Objetivo
+-------| --------
+setPopulation | atualiza o texto referente a população na tela
+setProduction | atualiza o texto referente a produção na tela
+setFood | atualiza o texto referente a comida na tela
+setInfo |atualiza o texto referente a informação na tela
+createSubMenu | cria um menu pop up que será apresentado na tela(disponibilizando uma forma de adicionar observers aos botões de tal menu)
+setTurnListener | indica o que o botão de proximo turn ira fazer quando clicado
+disposeChild | deleta um elemento do UI
+
+### Interface IPopUpMenu
+
+~~~java 
+public interface IPopUpMenu {
+	public void checkItem();
+	
+	public boolean allChecked();
+	
+	public void setActionObservers(IActor actors[]);
+	
+}
+~~~
+Método | Objetivo
+-------| --------
+checkItem | marca que o observer de um item do menu pop up foi checou se o mouse cumpriu seu requisito para ser ativado
+allChecked | informa se os observers de todos os items do menu pop up já realizaram seus testes para o ultimo evento do mouse
+setActionObservers | indica o que cada botão do menu pop up deve fazer quando acionado
+
+
+### Interface IContainer
+
+~~~java 
+public interface IContainer {
+	public void draw(GL2 gl);
+	public void setDims(float width,float height);
+}
+
+~~~
+Método | Objetivo
+-------| --------
+draw | "desenha" todos elementos contidos no container na tela
+setDims | informa o container quais as dimensões da tela que ele será desenhado(o JFrame/GLCanvas)
+
+### Interface IScreenManager
+
+~~~java 
+public interface IScreenManager {
+	public void set2D(IContainer container);
+	
+	public void set3D(IBoard3DManager board);
+	
+	public void setMouse(IMouse mouse);
+}
+~~~
+Método | Objetivo
+-------| --------
+set2D | conecta os elementos 2D a tela
+set3D | conecta os elementos 3D a tela
+setMouse | conecta o mouse a tela
+
+
+### Interface IMouse
+
+~~~java 
+public interface IMouse
+	extends MouseListener,MouseMotionListener,
+		IRMouseObserver,IRemoveMouseObserver{
+	public void addActionObservers(String id ,IMouseObserver observer);
+	
+	public void removeActionObserver(String id);
+	 
+	public void addMotionObservers(String id ,IMouseObserver observer);
+	
+	public void removeMotionObserver(String id);
+	
+	public void addDraggObservers(String id ,IMouseObserver observer);
+	
+	public void removeDraggObserver(String id);
+}
+~~~
+Método | Objetivo
+-------| --------
+addActionObservers | adiciona um observer com id ao mouse, notificando este sempre que o mouse clicar em algo
+addMotionObservers | adiciona um observer com id ao mouse, notificando este sempre que o mouse se mover
+addDraggObservers  | adiciona um observer com id ao mouse, notificando este sempre que o mouse arrastar algo
+removeActionObserver | remove um observer de ações com id do mouse
+removeMotionObserver | remove um observer de movimentos com id do mouse
+removeDraggObserver  | remove um observer de arrastar com id do mouse
+
+
+
+### Interface IBoard3DManager
+
+~~~java 
+public interface IBoard3DManager {
+	public void positionCamera(GL2 gl, GLU glu);
+	
+	public void drawBoard(GL2 gl);
+	
+	public void updatePicker(Matrix4 i_view_matrix , Matrix4 i_projection_matrix);
+	
+	public ICellViewController getCell(int i, int j);
+	
+	public void setCellActionObserver(int i,int j,CellController controller);
+	
+	public IMouseObserver getCameraDraggObserver();
+	
+	public IMouseObserver getCameraMotionObserver();
+	
+	public IMouseObserver getCellPicker();
+}
+~~~
+Método | Objetivo
+-------| --------
+positionCamera | posiciona a camera do jogador para renderizar a cena do jogo 
+drawBoard | desenha o tabuleiro no espaço tridimensional da tela que esta sendo apresentado ao jogador
+updatePicker | passa as matrizes atuais do opengl, permitindo o que o picker se localize
+getCell | retorna um objeto que representa o elemento visível de uma celula
+setCellActionObserver | permite que uma celula seja clicada pelo jogador, passando o que deve ocorrer quando esta for clicada
+getCameraDraggObserver | retorna o elemento que move a camera
+getCameraMotionObserver | retorna o elemento que auxilia a camera ser movida
+getCellPicker | retorna o elemento que seleciona as celulas tri-dimensionais apresentadas ao jogador
+
+### Interface ICellViewController
+
+~~~java 
+public interface ICellViewController {
+	public void setObj(String obj_name);
+}
+
+~~~
+Método | Objetivo
+-------| --------
+setObj | muda o modelo 3D que será apresentado ao jogador por esta celula
+
 
 
 # Plano de Exceções
