@@ -67,7 +67,7 @@ public class BoardModel implements IBoardEvent, IBoardController{
 			
 			modifier[i] -= external_modifier[i];
 		}
-		System.out.println(modifier[0]+" "+modifier[1]+" "+modifier[2]);
+		//System.out.println(modifier[0]+" "+modifier[1]+" "+modifier[2]);
 	}
 	
 	public boolean hasComponent(Class<?> cls, int x, int y) {

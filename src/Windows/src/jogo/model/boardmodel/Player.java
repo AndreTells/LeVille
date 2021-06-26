@@ -73,7 +73,7 @@ public class Player implements IPlayerController{
 	public  void constructComponent(String comp_name,int x, int y) {
 		//trhow exeption
 		ConstructableComponent comp = null;
-		System.out.println(comp_name);
+		//System.out.println(comp_name);
 		if(comp_name.equals("City")) {
 			comp = new City();
 		}
