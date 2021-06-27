@@ -1,4 +1,4 @@
-package jogo.model.boardmodel.components;
+ package jogo.model.boardmodel.components;
 
 import jogo.model.boardmodel.CellModel;
 

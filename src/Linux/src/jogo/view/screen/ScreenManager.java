@@ -16,7 +16,6 @@ public class ScreenManager implements IScreenManager{
 	}
 	
 	public void set2D(IContainer container) {
-		//container.setDims(canvas.getCanvas().getWidth(), canvas.getCanvas().getWidth());
 		canvas.set2DContainter(container);
 	}
 	

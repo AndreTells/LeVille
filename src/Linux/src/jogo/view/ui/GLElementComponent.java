@@ -2,9 +2,6 @@ package jogo.view.ui;
 
 import com.jogamp.opengl.GL2;
 
-import jogo.exceptions.DimensoesInvalidas;
-import jogo.exceptions.IdInvalido;
-import jogo.exceptions.PosicaoInvalida;
 import jogo.view.mouse.IMouse;
 
 public abstract class GLElementComponent{

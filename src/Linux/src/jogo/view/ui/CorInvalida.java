@@ -1,7 +1,9 @@
-package jogo.exceptions;
+package jogo.view.ui;
 
 public class CorInvalida extends AtributoInvalido {
-	   public CorInvalida() {
+	private static final long serialVersionUID = -1958134945464161357L;
+
+	public CorInvalida() {
 	      super();
 	   }
 

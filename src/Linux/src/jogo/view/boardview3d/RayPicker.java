@@ -1,10 +1,6 @@
 package jogo.view.boardview3d;
 
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.LinkedList;
-import java.util.List;
-
 import com.jogamp.opengl.math.Matrix4;
 import com.jogamp.opengl.math.VectorUtil;
 
@@ -43,8 +39,7 @@ public class RayPicker implements IMouseObserver{
 	public void setInverseViewMatrix(Matrix4 inverse_view_matrix) {this.inverse_view_matrix = inverse_view_matrix;}
 	public void setEye(float[] eye) {this.eye = eye;}
 	
-	public float[] getRay(float mouse_x,float mouse_y) {		
-		//System.out.println(e.getY());
+	public float[] getRay(float mouse_x,float mouse_y) {	
 		float x = mouse_x;
 		float y = mouse_y;
 		float z = 1.0f;
@@ -88,7 +83,6 @@ public class RayPicker implements IMouseObserver{
 					float[] aabb_max = this.aabb_maxs[j][k];
 					
 					if((aabb_min[0] < current[0]  && current[0]< aabb_max[0]) && (aabb_min[1] < current[1]  && current[1] < aabb_max[1]) && (aabb_min[2] < current[2]  && current[2] < aabb_max[2])) {
-						//System.out.println(current[0]+" | "+current[1]+" | "+current[2]);
 						clicked_object = new int[] {j,k};
 						return true;
 					}

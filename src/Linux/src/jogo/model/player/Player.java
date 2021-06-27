@@ -1,12 +1,6 @@
-package jogo.model.boardmodel;
+package jogo.model.player;
 
-import jogo.model.boardmodel.components.Castle;
-import jogo.model.boardmodel.components.City;
-import jogo.model.boardmodel.components.ConstructCostEnum;
-import jogo.model.boardmodel.components.ConstructableComponent;
-import jogo.model.boardmodel.components.Farm;
-import jogo.model.boardmodel.components.LumberMill;
-import jogo.model.boardmodel.components.PreserveForest;
+import jogo.model.boardmodel.IBoardPlayer;
 
 public class Player implements IPlayerController{
 	private int population;
@@ -14,14 +8,16 @@ public class Player implements IPlayerController{
 	private int production;
 	private int food;
 	private int food_target;
-	private BoardModel board;
+	private IBoardPlayer board;
 	
-	protected Player(BoardModel board) {
+	public Player() {
 		population = 1;
 		population_limit = 1;
 		production = 80;
 		food = 0;
 		food_target = 6;
+	}
+	public void connect(IBoardPlayer board) {
 		this.board = board;
 	}
 	
@@ -46,8 +42,10 @@ public class Player implements IPlayerController{
 	}
 	
 	public void claim(int x,int y) {
-		board.claim(x,y);
-		useProduction(ConstructCostEnum.CLAIM.getCost());		
+		if(production>=ConstructCostEnum.CLAIM.getCost()) {
+			board.claim(x,y);
+			useProduction(ConstructCostEnum.CLAIM.getCost());		
+		}	
 	}
 	
 	public void useProduction(int value) {
@@ -71,31 +69,26 @@ public class Player implements IPlayerController{
 	}
 	
 	public  void constructComponent(String comp_name,int x, int y) {
-		//trhow exeption
-		ConstructableComponent comp = null;
-		System.out.println(comp_name);
-		if(comp_name.equals("City")) {
-			comp = new City();
-		}
-		else if(comp_name.equals("Farm")) {
-			comp = new Farm();
-		}
-		else if(comp_name.equals("LumberMill")) {
-			comp = new LumberMill();
-		}
-		else if(comp_name.equals("Castle")) {
-			comp = new Castle();
-		}
-		else if(comp_name.equals("PreserveForest")) {
-			comp = new PreserveForest();
-		}
-		
-		else{
-			return;
-		}
-		
-		if(comp.construct(this)) {
-			board.addComponent(comp,x,y);
+		if(board.addComponent(comp_name,x,y,this.production)) {
+			int cost = 0;
+			switch(comp_name) {
+				case"City":
+					cost = ConstructCostEnum.CITY.getCost();
+					break;
+				case"Farm":
+					cost = ConstructCostEnum.FARM.getCost();
+					break;
+				case"LumberMill":
+					cost = ConstructCostEnum.LUMBERMILL.getCost();
+					break;
+				case"Castle":
+					cost = ConstructCostEnum.CASTLE.getCost();
+					break;
+				case"PreserveForest":
+					cost = ConstructCostEnum.PRESERVEFOREST	.getCost();
+					break;
+			}
+			this.useProduction(cost);
 		}
 	}
 

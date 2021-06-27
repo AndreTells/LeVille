@@ -1,6 +1,10 @@
-package jogo.model.boardmodel;
+package jogo.model.player;
+
+import jogo.model.boardmodel.IBoardPlayer;
 
 public interface IPlayerController {
+	
+	public void connect(IBoardPlayer board);
 	
 	public int getPopulationValue();
 	

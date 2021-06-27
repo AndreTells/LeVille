@@ -7,10 +7,10 @@ import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.math.Matrix4;
 import com.jogamp.opengl.math.VectorUtil;
 
-import jogo.controller.gamecontroller.CellController;
 import jogo.view.boardview3d.camera.CameraDraggObserver;
 import jogo.view.boardview3d.camera.CameraMotionObserver;
 import jogo.view.boardview3d.camera.GLCamera;
+import jogo.view.mouse.IActor;
 import jogo.view.mouse.IMouseObserver;
 
 public class BoardViewManager implements IBoard3DManager {
@@ -98,7 +98,7 @@ public class BoardViewManager implements IBoard3DManager {
 		this.camera = new GLCamera(eye,target,up);
 	}
 
-	public void setCellActionObserver(int i,int j,CellController controller) {
+	public void setCellActionObserver(int i,int j,IActor controller) {
 		float[] min = this.cells[i][j].getAabbMin();
 		float[] max = this.cells[i][j].getAabbMax();
 		picker.addClickableObject(i,j,min, max, controller);

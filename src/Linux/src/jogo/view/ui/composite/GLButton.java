@@ -9,7 +9,6 @@ public class GLButton extends GLElementComposite {
 	
 	//private GLLabel text;
 	private GLRectangle backdrop;
-	private String text;
 	
 	public GLButton(
 			String id,GLElementComposite parent,
@@ -19,8 +18,6 @@ public class GLButton extends GLElementComposite {
 			float[] rectangle_color,float z_index) {
 		
 		super(id,parent,pos_x,pos_y,width,height);
-		
-		this.text = text;
 		
 		GLLabel btn_text = new GLLabel(id+"_text",this,
 				0,0,text,text_color

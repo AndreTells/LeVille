@@ -4,7 +4,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.math.Matrix4;
 
-import jogo.controller.gamecontroller.CellController;
+import jogo.view.mouse.IActor;
 import jogo.view.mouse.IMouseObserver;
 
 public interface IBoard3DManager {
@@ -16,7 +16,7 @@ public interface IBoard3DManager {
 	
 	public ICellViewController getCell(int i, int j);
 	
-	public void setCellActionObserver(int i,int j,CellController controller);
+	public void setCellActionObserver(int i,int j,IActor controller);
 	
 	public IMouseObserver getCameraDraggObserver();
 	

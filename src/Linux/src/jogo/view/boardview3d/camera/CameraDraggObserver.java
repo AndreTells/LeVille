@@ -1,7 +1,6 @@
 package jogo.view.boardview3d.camera;
 
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 
 import jogo.view.mouse.IMouseObserver;
 

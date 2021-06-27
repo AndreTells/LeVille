@@ -1,6 +1,5 @@
 package jogo.view.ui;
 
-import jogo.exceptions.CorInvalida;
 import jogo.view.mouse.IActor;
 
 public abstract class GLElementLeaf extends GLElementComponent{

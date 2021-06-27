@@ -1,18 +1,13 @@
 package jogo.model.boardmodel;
 
 public class BoardManager implements IBoardModelBuilder{
-	private static Player player;
 	private static BoardModel board;
 	
-	public Player getPlayer() {
-		if(player ==null) {
-			if(board == null) {
-				this.getBoardController();
-			}
-			
-			player = new Player(board);
+	public IBoardPlayer getBoardPlayer() {
+		if(board ==null) {
+			board = new BoardModel();
 		}
-		return player;
+		return board;
 	}
 	
 	public IBoardController getBoardController() {
@@ -23,6 +18,9 @@ public class BoardManager implements IBoardModelBuilder{
 	}
 	
 	public IBoardEvent getBoardEvent() {
+		if(board ==null) {
+			board = new BoardModel();
+		}
 		return board;
 	}
 }

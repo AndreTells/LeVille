@@ -21,9 +21,6 @@ public class GL2DObserver implements IMouseObserver{
 		float[] element_pos = element.getAbsolutePos();
 		float[] dimensions = element.getDims();
 		
-		//System.out.println(element.getID()+" x: "+element_pos[0]+" y: "+element_pos[1]+" width: "+dimensions[0]+" height: "+dimensions[1]);
-		//System.out.println(mouse_x+" "+mouse_y);
-		
 		if((mouse_x>element_pos[0] && mouse_x<(element_pos[0]+dimensions[0])) 
 				&& (mouse_y>element_pos[1] && mouse_y<(element_pos[1]+dimensions[1]))) {
 			return true;

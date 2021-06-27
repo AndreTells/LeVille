@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import jogo.exceptions.ArquivoEventosNaoEncontrado;
-import jogo.model.boardmodel.IBoardController;
 import jogo.model.boardmodel.IBoardEvent;
 
 public class CityEvent extends Event{

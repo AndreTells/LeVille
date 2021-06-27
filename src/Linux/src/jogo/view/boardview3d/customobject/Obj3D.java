@@ -12,9 +12,8 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.math.Matrix4;
 
-import jogo.exceptions.ArquivoModeloNaoEncontrado;
+import jogo.view.boardview3d.ArquivoModeloNaoEncontrado;
 
 public class Obj3D {
 	private List<Face3D> faces;
@@ -105,7 +104,6 @@ public class Obj3D {
 		try {
 			List<Color> colors =  new LinkedList<Color>();
 			BufferedImage image = ImageIO.read(new File(path+name+".png"));
-			int width = image.getWidth();
 			
 			String line = file.readLine();
 			while(!line.equals("")) {
@@ -138,15 +136,12 @@ public class Obj3D {
 				int normal_index = 0;
 				for(int i=1;i<4;i++) {
 					String vertex_s[] = faces_s[i].split("/");//regex reduces 4 backslashes into 2 and java reduces 2 backslashes into 1, wich is what the string checks
-					//System.out.println(vertex_s[0]+" "+vertex_s[1]+" "+vertex_s[2]);
 					face_vertices[i-1] = vertices.get((Integer.parseInt(vertex_s[0]) - 1));
 					color_index = Integer.parseInt(vertex_s[1]);
 					normal_index = Integer.parseInt(vertex_s[2]);
 				}
 				Color color = colors.get(color_index-1);
 				float[] normal = normals.get(normal_index-1);
-				//System.out.println(color);
-				//System.out.println(color.getRed()/256f+" "+color.getGreen()/256f+" "+color.getBlue()/256f);
 				faces.add(new Face3D(face_vertices[0],face_vertices[1],face_vertices[2],color,normal));
 				
 				line = file.readLine();

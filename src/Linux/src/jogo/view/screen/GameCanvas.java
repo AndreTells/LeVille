@@ -16,33 +16,20 @@ import jogo.view.ui.IContainer;
 import jogo.view.ui.composite.GLContainer;
 
 public class GameCanvas implements GLEventListener {  
-	private GLU glu = new GLU();
+	private GLU glu;
 	private GLCanvas gc;
 	
 	private IBoard3DManager board;
 	private IContainer container_2d; 
 	
 	public GameCanvas(int frame_width, int frame_height){
+		glu = new GLU();
+		
 		Game3DObjectManager.loadModels();
 		
 		this.setUpCanvas(frame_width, frame_height);
-		
-		//this.mouse = new GLMouse(gc);
-		
-	   //	this.setUpCamera();
 	   	
-	   	//3d space
-	   //	setUpCellMatrix();
-	   	
-	   	//2d space
-	 	//GLElementComponent.setMouse(mouse);
-	   	
-	   	this.container_2d = new GLContainer("container",frame_width,frame_height);
-	   	
-	 //  	this.ui = new UI(container_2d);
-	   		   	
-	//   	this.setUpPicker();
-	   	//necessary for JOGL
+	   	this.container_2d = new GLContainer("container",frame_width,frame_height);	
 	   	gc.addGLEventListener( this );
 	   	
 	}
