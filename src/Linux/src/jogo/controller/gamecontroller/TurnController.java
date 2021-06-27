@@ -61,6 +61,8 @@ public class TurnController implements IActor{
 				EventPopUpController pop_up_controller = new EventPopUpController(this);
 				menu.setActionObservers(new IActor[] {pop_up_controller});
 				
+				updateStats();
+				
 			}
 			
 		}

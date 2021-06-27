@@ -16,6 +16,7 @@ import jogo.view.ui.IContainer;
 import jogo.view.ui.composite.GLContainer;
 
 public class GameCanvas implements GLEventListener {  
+	private boolean set_up_done;
 	private GLU glu;
 	private GLCanvas gc;
 	
@@ -30,7 +31,7 @@ public class GameCanvas implements GLEventListener {
 	   	
 	   	this.container_2d = new GLContainer("container",frame_width,frame_height);	
 	   	gc.addGLEventListener( this );
-	   	
+	   	set_up_done = false;
 	}
 	
 	private void setUpCanvas(int width, int height) {
@@ -48,7 +49,9 @@ public class GameCanvas implements GLEventListener {
 	} 
 	
 	public void display( GLAutoDrawable drawable ) {
-		
+		if(!set_up_done) {
+			return;
+		}
 	   final GL2 gl = drawable.getGL().getGL2();
 	   gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT );
 	   gl.glLoadIdentity();
@@ -150,6 +153,10 @@ public class GameCanvas implements GLEventListener {
 	
 	public void set3DBoard(IBoard3DManager board) {
 		this.board = board;
+	}
+	
+	protected void setUpFinished() {
+		this.set_up_done = true;
 	}
 	
 }

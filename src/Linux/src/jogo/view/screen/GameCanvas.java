@@ -33,6 +33,8 @@ public class GameCanvas implements GLEventListener {
 	   	this.container_2d = new GLContainer("container",frame_width,frame_height);	
 	   	gc.addGLEventListener( this );
 	   	
+	   	set_up_done  = false;
+	   	
 	}
 	
 	private void setUpCanvas(int width, int height) {
