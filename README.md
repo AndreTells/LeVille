@@ -13,7 +13,7 @@ Para evitar tal, o jogador poderá escolher o que construir em cada espaço do m
 ## Vídeos do Projeto
 vídeo da primeira versão do projeto:<br>
 
-[![vídeo de prévia](./media/imagem_video(1).png)](./media/video de apresentacao-165263-andre silva telles-previa.mp4)
+[![vídeo de prévia](./media/imagem_video(1).png)][(./media/video de apresentacao-165263-andre silva telles-previa.mp4)]
 
 
 
