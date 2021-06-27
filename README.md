@@ -31,23 +31,26 @@ slides usados da primeira versão do projeto:<br>
 
 ## Componente Builder
 Este Componente pertence ao controller e é responsável por e conectar todos os outros componentes
-![Builder](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-builder.jpg)
+![Builder](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-builder.jpg)
+
 **Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | jogo.controller.Builder
-Autores | André Silva Telles
-Interfaces |  IRBoardModelBuilder<br>  IRScreenManager<br>  IRUIManager<br>  IRMouse<br>  IRBoard3DManager<br>  IREventManager
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.controller.Builder | André Silva Telles | IRBoardModelBuilder<br>  IRScreenManager<br>  IRUIManager<br>  IRMouse<br>  IRBoard3DManager<br>  IREventManager<br> IRPlayerController<br> IRControllerBuilder
 
 ### Interfaces
-![Builder-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-builder.jpg)
+![Builder-Interfaces p1](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-builder-p1.jpg)
+![Builder-Interfaces p2](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-builder-p2.jpg)
+
+
 interface agregadora do componente em java:
 ~~~java 
-public interface IGameBuilder 
-   extends IRBoardModelBuilder,IRScreenManager,
-	    IRUIManager,IRMouse,IRBoard3DManager,IREventManager
-     {
-     public void buildGame();
+public interface IGameBuilder
+	extends IRBoardModelBuilder,IRScreenManager,
+	IRUIManager,IRMouse,IRBoard3DManager,IREventManager,
+	IRPlayerController,IRControllerBuilder
+	{
+	public void buildGame();	
 }
 ~~~
 
@@ -152,6 +155,7 @@ Interfaces |  IRBoardModelBuilder<br>  IRScreenManager<br>  IRUIManager<br>  IRM
 
 ### Interfaces
 ![Mouse-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-mouse.jpg)
+
 interface agregadora do componente em java:
 ~~~java 
 public interface IMouse
@@ -186,6 +190,7 @@ jogo.controller.gamecontroller.TurnController | André Silva Telles | IActor
 
 ### Interfaces
 ![GameController-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-gamecontroller.jpg)
+
 interface que permite que observers excutem tarefas que podem ser facilmente alteradas, basta trocar o IActor. As Classes deste componentes são tais tarefas
 ~~~java
 public interface IActor {
@@ -197,20 +202,18 @@ public interface IActor {
 
 
 ## Componente BoardModel
-responsável por guardar as informações do jogador e do tabuleiro, por exemplo guardar:
-- a quantidade de comida que o jogador possui
+responsável por guardar as informações do tabuleiro, por exemplo guardar:
 - quais celulas foram tomadas pelo jogador
 - as informações das celulas(posição, componentes na celula, atributos da celula, etc...)
-- etc...
-![BoardModel](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-BoardModel.jpg)
+- modificadores para o proximo turno
+![BoardModel](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-BoardModel.jpg)
 
 **Ficha Técnica**
 Classe | autor | Interfaces
 ----- | ----- | -----
 jogo.model.boardmodel.BoardManager | André Silva Telles | IBoardModelBuilder
 jogo.model.boardmodel.CellModel | André Silva Telles | N/A
-jogo.model.boardmodel.Player | André Silva Telles | IPlayerController
-jogo.model.boardmodel.BoardModel | André Silva Telles | IBoardEvent<br> IBoardController
+jogo.model.boardmodel.BoardModel | André Silva Telles | IBoardEvent<br> IBoardController<br> IBoardPlayer
 jogo.model.boardmodel.mapgenerator.MapGenerator | André Silva Telles | N/A
 jogo.model.boardmodel.mapgenerator.ImprovedNoise | André Silva Telles | N/A
 jogo.model.boardmodel.components.Castle | André Silva Telles | N/A
@@ -226,16 +229,18 @@ jogo.model.boardmodel.components.PreserveForest | André Silva Telles | N/A
 jogo.model.boardmodel.components.Water | André Silva Telles | N/A
 
 ### Interfaces
-![BoardModel-Interfaces-1](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-BoardModel(parte-1).jpg)
-![BoardModel-Interfaces-2](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-BoardModel(parte-2).jpg)
+![BoardModel-Interfaces-p1](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-BoardModel-p1.jpg)
+![BoardModel-Interfaces-p2](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-BoardModel-p2.jpg)
+
 interface que comanda ligações do componente com outros componentes
 ~~~java
 public interface IBoardModelBuilder {
-	public Player getPlayer();
 	
 	public IBoardController getBoardController();
 	
 	public IBoardEvent getBoardEvent();
+	
+	public IBoardPlayer getBoardPlayer();
 }
 ~~~
 
@@ -252,6 +257,57 @@ jogo.model.events.Event | André Silva Telles | N/A
 jogo.model.events.CityEvent | André Silva Telles | N/A
 
 ![Events-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-Events.jpg)
+
+interface que permite o comando dos eventos
+~~~java
+public interface IEventManager {
+	
+	public String ExecuteRandomEvent();
+	
+	public void setBoard(IBoardEvent board);
+	
+}
+~~~
+
+## Componente Player 
+responsável guardar todas as informações do jogador como:
+- quantidade de população
+- quantidade de "casas para a população"
+- quantidade de produção
+- quantidade de comida
+- quantidade objetivo de comida
+![Player](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-player.jpg)
+
+**Ficha Técnica**
+Classe | autor | Interfaces
+----- | ----- | -----
+jogo.model.player.Player | André Silva Telles | IPlayerController
+
+![Player-Interfaces](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-player.jpg)
+
+interface que permite o controlar os atributos do player
+~~~java
+public interface IPlayerController {
+	
+	public void connect(IBoardPlayer board);
+	
+	public int getPopulationValue();
+	
+	public int getPopulationLimitValue();
+	
+	public int getProductionValue();
+	
+	public int getFoodValue();
+	
+	public int getFoodTargetValue();
+	
+	public void addModifier(int modifier[]);
+	
+	public void claim(int x,int y);
+
+	public  void constructComponent(String comp_name,int x, int y);
+}
+~~~
 
 
 
