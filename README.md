@@ -25,7 +25,9 @@ slides usados da primeira versão do projeto:<br>
 # Diagramas
 
 ## Diagrama Geral de Componentes
-![Diagrama geral do Projeto](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-geral-do-projeto.jpg)
+![Diagrama geral do Projeto p1](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-geral-do-projeto-p1.jpg)
+![Diagrama geral do Projeto p2](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-geral-do-projeto-p2.jpg)
+![Diagrama geral do Projeto p2](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-geral-do-projeto-p3.jpg)
 
 ## Componente Builder
 Este Componente pertence ao controller e é responsável por e conectar todos os outros componentes
