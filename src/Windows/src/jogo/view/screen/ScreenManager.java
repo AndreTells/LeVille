@@ -11,6 +11,7 @@ public class ScreenManager implements IScreenManager{
 	public ScreenManager() {
 		this.frame = new GameFrame();
 		this.canvas = new GameCanvas(frame.getWidth(),frame.getHeight());
+		while(canvas.getCanvas()==null);
 		frame.add(canvas.getCanvas());
 	   	frame.setVisible(true);
 	}
