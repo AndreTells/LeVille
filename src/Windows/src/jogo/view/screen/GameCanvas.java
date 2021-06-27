@@ -16,13 +16,14 @@ import jogo.view.ui.IContainer;
 import jogo.view.ui.composite.GLContainer;
 
 public class GameCanvas implements GLEventListener {  
-	private GLU glu = new GLU();
+	private GLU glu;
 	private GLCanvas gc;
 	
 	private IBoard3DManager board;
 	private IContainer container_2d; 
 	
 	public GameCanvas(int frame_width, int frame_height){
+		glu = new GLU();
 		Game3DObjectManager.loadModels();
 		
 		this.setUpCanvas(frame_width, frame_height);
