@@ -15,7 +15,7 @@ public interface IBoardController {
 	
 	public List<String> getPossibleActions(int x,int y);
 	
-	public void addModifier(int[] modifier);
+	//public void addModifier(int[] modifier);
 
 	public boolean isClaimed(int x,int y);
 }
