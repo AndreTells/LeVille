@@ -16,6 +16,7 @@ import jogo.view.ui.IContainer;
 import jogo.view.ui.composite.GLContainer;
 
 public class GameCanvas implements GLEventListener {  
+	private boolean set_up_done;
 	private GLU glu;
 	private GLCanvas gc;
 	
@@ -49,12 +50,16 @@ public class GameCanvas implements GLEventListener {
 	} 
 	
 	public void display( GLAutoDrawable drawable ) {
-		
+		if(!set_up_done) {
+			return;
+		}
 	   final GL2 gl = drawable.getGL().getGL2();
+	   
 	   gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT );
 	   gl.glLoadIdentity();
 	   gl.glClearColor(0.08f, 0.13f, 0.17f, 0.5f);
 	   //draw 3d objects
+
 	   board.positionCamera(gl, glu);
 	   
 	   board.drawBoard(gl);
@@ -90,7 +95,7 @@ public class GameCanvas implements GLEventListener {
 	   	
 	   gl.glFlush();
    }  
-
+	
 	public void dispose( GLAutoDrawable drawable ) {}  
 
 	private void enable3D(GL2 gl) {
@@ -151,6 +156,10 @@ public class GameCanvas implements GLEventListener {
 	
 	public void set3DBoard(IBoard3DManager board) {
 		this.board = board;
+	}
+	
+	protected void setUpFinished() {
+		this.set_up_done = true;
 	}
 	
 }

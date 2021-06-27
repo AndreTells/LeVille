@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/jogo/controller/builder/IRControllerBuilder.java</name>
+			<type>1</type>
+			<location>/home/osboxes/Desktop/projeto de mc322/LeVille/src/Linux/src/jogo/controller/builder/IRControllerBuilder.java</location>
+		</link>
+		<link>
+			<name>src/jogo/controller/builder/IRPlayerController.java</name>
+			<type>1</type>
+			<location>/home/osboxes/Desktop/projeto de mc322/LeVille/src/Linux/src/jogo/controller/builder/IRPlayerController.java</location>
+		</link>
+	</linkedResources>
 </projectDescription>
