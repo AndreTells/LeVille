@@ -2,8 +2,8 @@
 ## Descrição Resumida do Projeto
  O jogo consiste em expandir sua cidade até possuir mais de 50%. Porém, o jogador perderá se:
  - Tiver 0 de população ao final de um turno
- - Tiver mais população do que espaco disponível
- - Não produzir ganhar coomida ao final de algum turno
+ - Tiver mais população do que espaço disponível
+ - Não produzir ganhar comida ao final de algum turno
 <br>
 Para evitar tal, o jogador poderá escolher o que construir em cada espaço do mapa que pertencer a sí, aumentando ou diminuindo atributos de sua cidade. Além disso, eventos aleatórios ocorrem no início de cada turno, esses atrapalhando o jogador e impedindo que este vença facilmente.
 
@@ -12,16 +12,19 @@ Para evitar tal, o jogador poderá escolher o que construir em cada espaço do m
 
 ## Vídeos do Projeto
 vídeo da primeira versão do projeto:<br>
-[![vídeo de prévia](https://github.com/AndreTells/LeVille/blob/main/images/imagem_video(1).png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/video%20de%20apresentacao-165263-andre%20silva%20telles%20(1).mp4)
+
+[![vídeo de prévia](./media/imagem_video(1).png)](./media/video de apresentacao-165263-andre silva telles-previa.mp4)
+
+
 
 vídeo da versão final do projeto
-[![vídeo final](https://github.com/AndreTells/LeVille/blob/main/images/imagem_video(2).png)](https://github.com/AndreTells/LeVille/blob/main/images/Video%20de%20apresentacao(versao%20final)-165263-andresilvatelles.mp4)
+[![vídeo final](./media/imagem_video(2).png)](./media/Video de apresentacao(versao final)-165263-andresilvatelles.mp4)
 
 # Slides do Projeto
 slides usados da primeira versão do projeto:<br>
 [![slides de prévia do projeto](https://github.com/AndreTells/LeVille/blob/main/images/imagem_apresentacao.png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/Trabalho%20de%20MC322-Jogo-165263-andre%20silva%20telles%20(1).pdf)
 
-# Documentção dos Componentes
+# Documentação dos Componentes
 # Diagramas
 
 ## Diagrama Geral de Componentes
