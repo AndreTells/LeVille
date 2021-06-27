@@ -14,8 +14,6 @@ public interface IBoardController {
 	public String getCellInfo(int x, int y);
 	
 	public List<String> getPossibleActions(int x,int y);
-	
-	//public void addModifier(int[] modifier);
 
 	public boolean isClaimed(int x,int y);
 }

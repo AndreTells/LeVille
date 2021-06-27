@@ -13,37 +13,37 @@ Para evitar tal, o jogador poderá escolher o que construir em cada espaço do m
 ## Vídeos do Projeto
 vídeo da primeira versão do projeto:<br>
 
-[![vídeo de prévia](./media/imagem_video(1).png)][(./media/video de apresentacao-165263-andre silva telles-previa.mp4)]
+[![vídeo de prévia](./media/imagem_video-previa.png)][(./media/video_de_apresentacao-previa.mp4)]
 
 
 
 vídeo da versão final do projeto
-[![vídeo final](./media/imagem_video(2).png)](./media/Video de apresentacao(versao final)-165263-andresilvatelles.mp4)
+[![vídeo final](./media/imagem_video-final.png)](./media/video_de_apresentacao-final.mp4)
 
 # Slides do Projeto
 slides usados da primeira versão do projeto:<br>
-[![slides de prévia do projeto](https://github.com/AndreTells/LeVille/blob/main/images/imagem_apresentacao.png)](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/Trabalho%20de%20MC322-Jogo-165263-andre%20silva%20telles%20(1).pdf)
+[![slides de prévia do projeto](./media/imagem_apresentacao-previa.png)](./media/apresentacao-previa.pdf)
 
 # Documentação dos Componentes
 # Diagramas
 
 ## Diagrama Geral de Componentes
-![Diagrama geral do Projeto p1](./images/diagrama-geral-do-projeto-p1.jpg)
-![Diagrama geral do Projeto p1](./images/diagrama-geral-do-projeto-p2.jpg)
-![Diagrama geral do Projeto p1](./images/diagrama-geral-do-projeto-p3.jpg)
+![Diagrama geral do Projeto p1](./media/diagrama-geral-do-projeto-p1.jpg)
+![Diagrama geral do Projeto p1](./media/diagrama-geral-do-projeto-p2.jpg)
+![Diagrama geral do Projeto p1](./media/diagrama-geral-do-projeto-p3.jpg)
 
 ## Componente Builder
 Este Componente pertence ao controller e é responsável por e conectar todos os outros componentes
-![Builder](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-builder.jpg)
+![Builder](./media/diagrama-builder.jpg)
 
 **Ficha Técnica**
 Classe | autor | Interfaces
 ----- | ----- | -----
-jogo.controller.Builder | André Silva Telles | IRBoardModelBuilder<br>  IRScreenManager<br>  IRUIManager<br>  IRMouse<br>  IRBoard3DManager<br>  IREventManager<br> IRPlayerController<br> IRControllerBuilder
+jogo.controller.Builder | André Silva Telles | IRBoardModelBuilder<br>  IRScreenManager<br>  IRUIManager<br>  IRMouse<br>  IRBoard3DManager<br>  IREventManager<br> IRPlayerController<br> IRControllerBuilder 
 
 ### Interfaces
-![Builder-Interfaces p1](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-builder-p1.jpg)
-![Builder-Interfaces p2](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-builder-p2.jpg)
+![Builder-Interfaces p1](./media/diagrama-interfaces-builder-p1.jpg)
+![Builder-Interfaces p2](./media/diagrama-interfaces-builder-p2.jpg)
 
 
 interface agregadora do componente em java:
@@ -57,13 +57,14 @@ public interface IGameBuilder
 }
 ~~~
 
-O metodo build desta é o resposável por conectar todos os componentes do jogo
+O método build desta é o responsável por conectar todos os componentes do jogo
 
 ## Componente Screen 
 Tem a função de apresentar o UI, parte em 2D, e o tabuleiro, parte em 3D para o usuário em um JFrame.
-![Screen](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-screen.jpg)
+![Screen](./media/diagrama-screen.jpg)
 
 **Ficha Técnica**
+
 Classe | autor | Interfaces
 ----- | ----- | -----
 jogo.view.screen.ScreenManager | André Silva Telles | IScreenManager
@@ -71,7 +72,8 @@ jogo.view.screen.GameCanvas | André Silva Telles | GLEventListener
 jogo.view.screen.GameFrame | André Silva Telles | JFrame
 
 ### Interfaces
-![Screen-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-screen.jpg)
+![Screen-Interfaces](./media/diagrama-interfaces-screen.jpg)
+
 interface responsável por organizar conexão do componente com componentes externos 
 
 ~~~java 
@@ -86,12 +88,12 @@ public interface IScreenManager {
 
 
 ## Componente BoardView3D
-Resposável por armazenar como cada celula é apresentada para o usuário. Controlando:
+Responsável por armazenar como cada célula é apresentada para o usuário. Controlando:
 - Os modelos 3D disponíveis ao jogo
 - Carregar os modelos 3D nos assets	
-- O estado atual de cada celula
-- como desenhar tais celulas na tela
-![BoardView3D](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-boardview3d.jpg)
+- O estado atual de cada célula
+- como desenhar tais células na tela
+![BoardView3D](./media/diagrama-boardview3d.jpg)
 
 **Ficha Técnica**
 Classe | autor | Interfaces
@@ -105,17 +107,20 @@ jogo.view.boardview3d.camera.CameraDraggObserver | André Silva Telles | IMouseO
 jogo.view.boardview3d.camera.CameraMotionObserver | André Silva Telles | IMouseObserver
 jogo.view.boardview3d.customobject.Obj3D | André Silva Telles | N/A
 jogo.view.boardview3d.customobject.Face3D | André Silva Telles | N/A
+jogo.view.boardview3d.ArquivoModeloNaoEncontrado | André Silva Telles | N/A 
+jogo.view.boardview3d.ComponenteInvalido | André Silva Telles | N/A 
 
 
 ### Interfaces
-![BoardView3D-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-boardview3d.jpg)
+![BoardView3D-Interfaces](./media/diagrama-interfaces-boardview3d.jpg)
 
 
 
 
 ## Componente UI
-Responsável por organizar os elementos 2D que seram apresentados na tela.
-Para tal, foi empregado o design pattern _Composite_ . Este consite em ter um elemento geral, o componente, e 2 sub elementos que herdam deste, o compostos e a folha. O composto pode possuir vários componentes como filho e a maioria de seus métodos é repassado para seus filhos. Já a folha fica encarregada de executar a operação implementada. Os compostos implementados foram:
+Responsável por organizar os elementos 2D que serão apresentados na tela.
+Para tal, foi empregado o design pattern _Composite_ . Este consiste em ter um elemento geral, o componente, e 2 sub elementos que herdam deste, o compostos e a folha. O composto pode possuir vários componentes como filho e a maioria de seus métodos é repassado para seus filhos. Já a folha fica encarregada de executar a operação implementada. Os compostos implementados foram:
+
 - GLButton
 - GLContainer
 - GLPopUPMenu
@@ -126,7 +131,7 @@ e as folhas foram:
 - GLRectangle
 
 O método principal deste é o _draw(GL2 gl)_. Este expressa como desenhar os elementos na tela
-![UI](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-ui.jpg)
+![UI](./media//diagrama-ui.jpg)
 
 **Ficha Técnica**
 Classe | autor | Interfaces
@@ -142,15 +147,22 @@ jogo.view.ui.leaf.GLRectangle | André Silva Telles | N/A
 jogo.view.ui.composite.GLContainer | André Silva Telles | IContainer
 jogo.view.ui.composite.GLPopUpMenu | André Silva Telles | IPopUpMenu
 jogo.view.ui.composite.GLButton | André Silva Telles | N/A
+jogo.view.ui.AtributoInvalido | André Silva Telles | N/A 
+jogo.view.ui.PosicaoInvalida | André Silva Telles | N/A 
+jogo.view.ui.IdInvalido | André Silva Telles | N/A 
+jogo.view.ui.DimensoesInvalidas | André Silva Telles | N/A 
+jogo.view.ui.CorInvalida | André Silva Telles | N/A 
+jogo.view.ui.ComponenteInvalido | André Silva Telles | N/A 
 
 ### Interfaces
-![BoardView3D-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-ui.jpg)
+![BoardView3D-Interfaces](./media/diagrama-interfaces-ui.jpg)
 
 
 ## Componente Mouse 
-serve como uma ponte entre o componente screen, os componentes desenhados na screen(UI e BoardView3D) e o controller. Checando se algum elemento foi ativado ou não(clicado, arrastado, movimentos, etc...) e informa sinaliza que o controller deve iniciar alguma ação
-![Mouse](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-mouse.jpg)
+serve como uma ponte entre o componente screen, os componentes desenhados nele(UI e BoardView3D) e o controller. Checando se algum elemento foi ativado ou não(clicado, arrastado, movimentos, etc...) e informa sinaliza que o controller deve iniciar alguma ação
+![Mouse](./media/diagrama-mouse.jpg)
 **Ficha Técnica**
+
 item | detalhamento
 ----- | -----
 Classe | jogo.controller.Builder
@@ -158,7 +170,7 @@ Autores | André Silva Telles
 Interfaces |  IRBoardModelBuilder<br>  IRScreenManager<br>  IRUIManager<br>  IRMouse<br>  IRBoard3DManager<br>  IREventManager
 
 ### Interfaces
-![Mouse-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-mouse.jpg)
+![Mouse-Interfaces](./media/diagrama-interfaces-mouse.jpg)
 
 interface agregadora do componente em java:
 ~~~java 
@@ -181,7 +193,7 @@ public interface IMouse
 
 ## Componente GameController 
 responsável por executar as ações requisitadas pelo usuário através do mouse
-![GameController](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-gamecontroller.jpg)
+![GameController](./media/diagrama-gamecontroller.jpg)
 
 **Ficha Técnica**
 Classe | autor | Interfaces
@@ -190,16 +202,20 @@ jogo.controller.gamecontroller.CellController | André Silva Telles | IActor
 jogo.controller.gamecontroller.ConstructPopUpController | André Silva Telles | IActor
 jogo.controller.gamecontroller.EventPopUpController | André Silva Telles | IActor
 jogo.controller.gamecontroller.TurnController | André Silva Telles | IActor
+jogo.controller.gamecontroller.ControllerManager | André Silva Telles | IControllerBuilder 
 
 
 ### Interfaces
-![GameController-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-gamecontroller.jpg)
+![GameController-Interfaces](./media/diagrama-interfaces-gamecontroller.jpg)
 
-interface que permite que observers excutem tarefas que podem ser facilmente alteradas, basta trocar o IActor. As Classes deste componentes são tais tarefas
+interface que permite que o controller seja conectado aos outros elementos
 ~~~java
-public interface IActor {
-	public void act(MouseEvent e);
-	public void act(MouseEvent e,boolean missed);
+public interface IControllerBuilder {
+	public IActor connectTurnController(IPlayerController player,IBoardController board_model,
+			IStats stats_view,IBoard3DManager board_view_manager,IEventManager event_manager);
+	
+	public IActor connectCellController(int i,int j);
+
 }
 ~~~
 
@@ -207,10 +223,10 @@ public interface IActor {
 
 ## Componente BoardModel
 responsável por guardar as informações do tabuleiro, por exemplo guardar:
-- quais celulas foram tomadas pelo jogador
-- as informações das celulas(posição, componentes na celula, atributos da celula, etc...)
-- modificadores para o proximo turno
-![BoardModel](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-BoardModel.jpg)
+- quais células foram tomadas pelo jogador
+- as informações das células(posição, componentes na célula, atributos da célula, etc...)
+- modificadores para o próximo turno
+![BoardModel](./media/diagrama-BoardModel.jpg)
 
 **Ficha Técnica**
 Classe | autor | Interfaces
@@ -233,8 +249,8 @@ jogo.model.boardmodel.components.PreserveForest | André Silva Telles | N/A
 jogo.model.boardmodel.components.Water | André Silva Telles | N/A
 
 ### Interfaces
-![BoardModel-Interfaces-p1](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-BoardModel-p1.jpg)
-![BoardModel-Interfaces-p2](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-BoardModel-p2.jpg)
+![BoardModel-Interfaces-p1](./media/diagrama-interfaces-BoardModel-p1.jpg)
+![BoardModel-Interfaces-p2](./media/diagrama-interfaces-BoardModel-p2.jpg)
 
 interface que comanda ligações do componente com outros componentes
 ~~~java
@@ -250,7 +266,7 @@ public interface IBoardModelBuilder {
 
 ## Componente Events 
 responsável por ler e executar eventos aleatórios no tabuleiro
-![Events](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-events.jpg)
+![Events](./media/diagrama-events.jpg)
 
 
 **Ficha Técnica**
@@ -259,8 +275,9 @@ Classe | autor | Interfaces
 jogo.model.events.EventManager | André Silva Telles | IEventManager
 jogo.model.events.Event | André Silva Telles | N/A
 jogo.model.events.CityEvent | André Silva Telles | N/A
+jogo.model.events.ArquivoEventosNaoEncontrado | André Silva Telles | N/A 
 
-![Events-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-Events.jpg)
+![Events-Interfaces](./media/diagrama-interfaces-Events.jpg)
 
 interface que permite o comando dos eventos
 ~~~java
@@ -280,14 +297,14 @@ responsável guardar todas as informações do jogador como:
 - quantidade de produção
 - quantidade de comida
 - quantidade objetivo de comida
-![Player](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-player.jpg)
+![Player](./media/diagrama-player.jpg)
 
 **Ficha Técnica**
 Classe | autor | Interfaces
 ----- | ----- | -----
 jogo.model.player.Player | André Silva Telles | IPlayerController
 
-![Player-Interfaces](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-interfaces-player.jpg)
+![Player-Interfaces](./media/diagrama-interfaces-player.jpg)
 
 interface que permite o controlar os atributos do player
 ~~~java
@@ -384,12 +401,41 @@ Método | Objetivo
 -------| --------
 connect | conectar o Componente Builder com o Componente UI
 
+### Interface IRPlayerController
+
+~~~java 
+public interface IRPlayerController {
+	public void connect(IPlayerController player);
+}
+~~~
+
+| Método  | Objetivo                                              |
+| ------- | ----------------------------------------------------- |
+| connect | conectar o Componente Builder com o Componente Player |
+
+
+
+### Interface IRPlayerController
+
+~~~java 
+public interface IRControllerBuilder {
+	public void connect(IControllerBuilder controller_manager);
+}
+~~~
+
+| Método  | Objetivo                                                  |
+| ------- | --------------------------------------------------------- |
+| connect | conectar o Componente Builder com o Componente Controller |
+
+
+
 ### Interface IGameBuilder
 
 ~~~java 
 public interface IGameBuilder
 	extends IRBoardModelBuilder,IRScreenManager,
-	IRUIManager,IRMouse,IRBoard3DManager,IREventManager
+	IRUIManager,IRMouse,IRBoard3DManager,IREventManager,
+	IRPlayerController,IRControllerBuilder
 	{
 	public void buildGame();
 	
@@ -398,6 +444,25 @@ public interface IGameBuilder
 Método | Objetivo
 -------| --------
 buildGame | conecta os Componentes do jogo uns com os outros
+
+### Interface IControllerBuilder
+
+~~~java 
+public interface IControllerBuilder {
+	public IActor connectTurnController(IPlayerController player,IBoardController board_model,
+			IStats stats_view,IBoard3DManager board_view_manager,IEventManager event_manager);
+	
+	public IActor connectCellController(int i,int j);
+
+}
+~~~
+
+| Método                | Objetivo                                        |
+| --------------------- | ----------------------------------------------- |
+| connectTurnController | cria o controller para o botão de próximo turno |
+| connectCellController | cria um controller para uma célula do tabuleiro |
+
+### 
 
 ### Interface IRMouseObserver
 
@@ -614,14 +679,14 @@ public interface IBoard3DManager {
 ~~~
 Método | Objetivo
 -------| --------
-positionCamera | posiciona a camera do jogador para renderizar a cena do jogo 
+positionCamera | posiciona a câmera do jogador para renderizar a cena do jogo 
 drawBoard | desenha o tabuleiro no espaço tridimensional da tela que esta sendo apresentado ao jogador
 updatePicker | passa as matrizes atuais do opengl, permitindo o que o picker se localize
-getCell | retorna um objeto que representa o elemento visível de uma celula
-setCellActionObserver | permite que uma celula seja clicada pelo jogador, passando o que deve ocorrer quando esta for clicada
-getCameraDraggObserver | retorna o elemento que move a camera
-getCameraMotionObserver | retorna o elemento que auxilia a camera ser movida
-getCellPicker | retorna o elemento que seleciona as celulas tri-dimensionais apresentadas ao jogador
+getCell | retorna um objeto que representa o elemento visível de uma célula 
+setCellActionObserver | permite que uma célula seja clicada pelo jogador, passando o que deve ocorrer quando esta for clicada 
+getCameraDraggObserver | retorna o elemento que move a câmera 
+getCameraMotionObserver | retorna o elemento que auxilia a câmera ser movida 
+getCellPicker | retorna o elemento que seleciona as células tri-dimensionais apresentadas ao jogador 
 
 ### Interface ICellViewController
 
@@ -678,8 +743,6 @@ public interface IBoardController {
 	public String getCellInfo(int x, int y);
 	
 	public List<String> getPossibleActions(int x,int y);
-	
-	public void addModifier(int[] modifier);
 
 	public boolean isClaimed(int x,int y);
 }
@@ -692,7 +755,6 @@ getCellHighestComponents | retorna o nome do componente com rank mais alto na ce
 getModifier | retorna o vetor de modificadores do tabuleiro
 getCellInfo | retorna uma string com informções relevantes ao jogador sobre a celula especificada
 getPossibleActions | retorna que ações podem ser realizadas sobre a celula especificada
-addModifier | atualiza o vetor de modificadores do tabuleiro com modificadores externos(outro vetor)
 isClaimed | checa se a celula especificada pertence ao jogador
 
 
@@ -700,25 +762,27 @@ isClaimed | checa se a celula especificada pertence ao jogador
 
 ~~~java 
 public interface IBoardModelBuilder {
-	public Player getPlayer();
 	
 	public IBoardController getBoardController();
 	
 	public IBoardEvent getBoardEvent();
+	
+	public IBoardPlayer getBoardPlayer();
 }
 ~~~
 Método | Objetivo
 -------| --------
-getPlayer | retorna o objeto que representa o jogador
+getBoardPlayer | retorna o que representa o tabuleiro na forma de um IBoardPlayer para que este seja conectado a um objeto IPlayerController 
 getBoardController | retorna o obeto que representa o tabuleiro na forma de um IBoardController para restringir o que pode ser feito com esse
 getBoardEvent | retorna o obeto que representa o tabuleiro na forma de um IBoardEvent para restringir o que pode ser feito com esse
 
 
-### Interface IBoardController
+### Interface IPlayerController
 
 ~~~java 
 public interface IPlayerController {
-	
+	public void connect(IBoardPlayer board);
+    
 	public int getPopulationValue();
 	
 	public int getPopulationLimitValue();
@@ -735,30 +799,30 @@ public interface IPlayerController {
 
 	public  void constructComponent(String comp_name,int x, int y);
 }
-
 ~~~
 Método | Objetivo
 -------| --------
-getPopulationValue | retorna quanto de população o jogador possui
-getPopulationLimitValue | retorna quantas "casas" o jogador possui
-getProductionValue | retorna quanto de produção o jogador possui
-getFoodValue | retorna quanto de comida o jogador possui
-getFoodTargetValue | retorna qual a quantidade de comida o jogador deve atingir para ganhar mais população
-addModifier | adiciona um modificador aos atributos do jogador
-claim | toma a celula especificada para o jogador
-constructComponent | constroi um componente na celula especificada se o jogador possuir produção o bastante
+ connect                 | indica ao objeto qual tabuleiro está sendo utilizado no jogo 
+ getPopulationValue      | retorna quanto de população o jogador possui                 
+ getPopulationLimitValue | retorna quantas "casas" o jogador possui                     
+ getProductionValue      | retorna quanto de produção o jogador possui                  
+ getFoodValue            | retorna quanto de comida o jogador possui                    
+ getFoodTargetValue      | retorna qual a quantidade de comida o jogador deve atingir para ganhar mais população 
+ addModifier             | adiciona um modificador aos atributos do jogador             
+ claim                   | toma a celula especificada para o jogador                    
+ constructComponent      | constrói um componente na célula especificada se o jogador possuir produção o bastante 
 
 
 # Plano de Exceções
 ## Diagrama da hierarquia de exceções
-![Plano-de-Exceções](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/Diagrama%20da%20hierarquia%20de%20exce%C3%A7%C3%B5es.jpg)
+![Plano-de-Exceções](./media/Diagrama%20da%20hierarquia%20de%20exce%C3%A7%C3%B5es.jpg)
 
 ## Descrição das classes de exceção
 Classe | Descrição
 ----- | -----
-ArquivoNaoEncontrado | Indica que o arquivo desejado nao foi encontrado na pasta de assets
-ArquivoEventosNaoEncontrado | Indica que o arquivo de eventos aleatórios nao foi encontrado na pasta de assets
-ArquivoModeloNaoEncontrado | Indica que o arquivo de um modelo 3D nao foi encontrado na pasta de assets
-MouseInvalido | Indica que GLMouse nao foi inicializado
+ArquivoNaoEncontrado | Indica que o arquivo desejado não foi encontrado na pasta de assets 
+ArquivoEventosNaoEncontrado | Indica que o arquivo de eventos aleatórios não foi encontrado na pasta de assets 
+ArquivoModeloNaoEncontrado | Indica que o arquivo de um modelo 3D não foi encontrado na pasta de assets 
+MouseInvalido | Indica que GLMouse não foi inicializado 
 AtributoInvalido | Indica que algum dos valores passados na criação de um GLElementComponent é null ou esta fora do escopo do atributo(ex:  altura negativa,...)
-ComponenteInvalido | Indica que a string passada não referencia um modelo 3d que o jogo tem acesso a 
+ComponenteInvalido | Indica que a string passada não referencia um modelo 3d ao qual o jogo tem acesso 
