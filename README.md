@@ -21,10 +21,210 @@ vídeo da versão final do projeto
 [![vídeo final](./media/imagem_video-final.png)](./media/video_de_apresentacao-final.mp4)
 
 # Slides do Projeto
-slides usados da primeira versão do projeto:<br>
+## Slides da Prévia:<br>
 [![slides de prévia do projeto](./media/imagem_apresentacao-previa.png)](./media/apresentacao-previa.pdf)
 
+
+
+## Slides da Apresentação Final
+
+
+
+## Relatório de Evolução
+
+A principal evolução do projeto foi a mudança de um tabuleiro 2D, como visto no slide da prévia, para um tabuleiro em 3D. Esta escolha trouxe a necessidade de melhor dividir os componentes na parte view e controller, permitindo um maior controle sobre as ações do mouse(clicar, arrastar, etc ...) e a  aparência de cada elemento apresentado na tela. Porém tal também necessitou que o planejamento do que seria implementado fosse alterado. 
+
+O elemento principal cortado para acomodar tal movimento foi a adição de tipos diversos de eventos aleatórios, atualmente existem apenas eventos que afetam diretamente o jogador, porém, originalmente, era planejado ter eventos que pudessem afetar o mapa e eventos capazes de afetar os atributos de células. Contudo, devido a forma como o componente evento foi implementado(que fica visível ao analisar-se o diagrama de interfaces do mesmo), a implementação de tais não seria muito difícil pois o elemento responsável por organizar os eventos aleatórios se utiliza de polimorfismo para poder executar qualquer tipo de evento.
+
+Outra dificuldade devido a esta mudança foi a questão de "como detectar clicks em um espaço 3D ?".Esta foi uma das partes mais difíceis do projeto, após muita leitura e achar o incrível guia: https://antongerdelan.net/opengl/raycasting.html consegui implementar uma forma eficiente de validar clicks nos modelos do tabuleiro.
+
+Além disso, outra mudança drástica foi a decisão de adotar o design pattern Composite , que será explicado de forma mais extensa posteriormente, que obrigou a refatoração de várias classes, porém tornou o projeto mais bem organizado e fácil de ser expandido. Ademais, isto também tornou necessário um entendimento melhor do que era mais fundamental aos menus(textos e retângulos) e o que podia ser realizado combinando os elementos fundamentais, acelerando o processo de implementação.
+
+Finalmente, houve a decisão de separar as classes do jogador e do tabuleiro em componentes diferentes que tornou o código mais modularizado e sua lógica mais explicita/ fácil de compreender.
+
+# Destaques de Código
+
+extraindo raio em 3D a partir de clicks em um plano 2D:
+
+~~~java
+...
+public float[] getRay(float mouse_x,float mouse_y) {	
+		float x = mouse_x;
+		float y = mouse_y;
+		float z = 1.0f;
+		float[] ray_nds = new float[] {x,y,z};
+		
+		
+		float[] ray_clip = new float[] {ray_nds[0],ray_nds[1],-1.0f,1.0f};
+		
+		
+		float[] ray_eye = new float[4];
+		inverse_projection_matrix.multVec(ray_clip, ray_eye);
+		ray_eye[2] = -1.0f;
+		ray_eye[3] =  0.0f;
+		
+		
+		float[] ray_wor_4d = new float[4];
+		inverse_view_matrix.multVec(ray_eye, ray_wor_4d);
+		float[] ray_wor = new float[3];
+		for(int i=0;i<3;i++) {
+			ray_wor[i] = ray_wor_4d[i];
+		}
+		ray_wor = VectorUtil.normalizeVec3(ray_wor);
+		
+		return ray_wor;
+	}
+...
+~~~
+
+a função acima utiliza conceitos de geometria analítica e conhecimento do funcionamento da biblioteca JOGL para reverter os processos que transformam o espaço tridimensional em uma imagem 2D e, a partir disso, calcula o vetor diretor da reta criado quando o usuário clica no ponto (mouse_x, mouse_y)
+
+~~~java 
+public class EventManager implements IEventManager{
+	private List<Event> events;
+    private IBoardEvent board;
+    ...
+    public String ExecuteRandomEvent() {
+		int index = getRandomNumber(0,events.size());
+		return events.get(index).executeEvent(board);
+	}
+    ...
+}
+~~~
+
+O trecho acima se utiliza de polimorfismo para escolher um evento qualquer(independente do tipo) para ser executa. Tal é uma boa prática pois permite que o código seja facilmente expandido para mais tipos de eventos. Outro caso eque exemplifica isto é:
+
+~~~java
+public class CellModel {
+    ...
+	private List<Component> components;
+    ...
+}
+~~~
+
+
+
+que permite que células possuam qualquer tipo de componente, sempre tenham acesso aos componentes  e seja possível expandir os componentes disponíveis sem alterar nada na classe.
+
+O trecho abaixo é relacionado a como o mouse guarda que elementos o observam
+
+~~~java
+public class GLMouse implements IMouse {
+
+	private Dictionary<String,IMouseObserver> dic_action_observers;
+	private Dictionary<String,IMouseObserver> dic_motion_observers;
+	private Dictionary<String,IMouseObserver> dic_dragg_observers;
+...
+}
+~~~
+
+guardar tais elementos tem duas vantagens principais:
+
+- facilita a remoção de observers caso necessário pois todos estão dentro de um dicionário com seu id próprio
+- facilita a criação de novos observers pois utiliza interfaces, permitindo que qualquer objeto que a implemente seja passado
+
+
+
+# Destaques de Pattern
+
+## Diagrama do Pattern MVC
+
+![diagrama MVC](.\media\MVC-Process.png)
+
+## Aplicação do pattern no código 
+
+Como este pattern é algo que não é aplicado diretamente em um ou dois componentes, é dificil apontar locais no código em há "implementações" desse, este pattern permeia toda a organização de classes do projeto. Tal fica visível ao analisar o diagrama geral de componentes que está dividido nas mesmas 3 seções ilustradas acima. Um detalhe sútil porém importante apresentao em tal diagrama, que demonstra que o projeto segue o design pattern, é o fato de componentes no model nunca se comunicarem diretamente com componentes no view, sempre são intermediados pelo controller. 
+
+Outra forma de encontrar o pattern no projeto é na organização dos pacotes. Os componentes foram organizados dentro de pacotes correspondentes a sua área(model, controller ou view), permitindo a fácil visualização da divisão de tarefas dentre os componentes do projeto
+
+A adoção de tal pattern ajudou em manter o projeto sempre organizado e modularizado, facilitando mudanças no código já que não havia necessidade de desvendar complexas relações de dependências entre classes, estas eram em maioria restritas a sua própria área quando adicionando novos componentes em  áreas diferentes.
+
+
+
+## Diagrama do Pattern Composite
+
+![diagrama Composite](C:\Users\andre\Desktop\Le Ville(New)\media\diagrama_composite_pattern.jpg)
+
+## Código do Pattern
+
+~~~java 
+public abstract class GLElementComponent{
+    protected float pos_x;
+	protected float pos_y;
+
+	protected String id;
+	protected GLElementComposite parent;
+
+	protected float width;
+	protected float height;
+    ...
+    abstract public void draw(GL2 gl);
+    ...
+}
+~~~
+
+~~~java
+public abstract class GLElementComposite extends GLElementComponent{
+	protected List<GLElementLeaf> children_leaf;
+	protected List<GLElementComposite> children_composite;
+    ...
+    public void addChild(GLElementComposite child) {
+		children_composite.add(child);
+	}
+	
+	public void addChild(GLElementLeaf child) {
+		children_leaf.add(child);
+	}
+    ...
+}
+~~~
+
+~~~java
+public abstract class GLElementLeaf extends GLElementComponent{
+
+	protected float[] color;
+	protected float z_index;
+    ...
+}
+~~~
+
+A ideia geral do deste design pattern é ciriar uma arvore de objetos em que o *Composite* possui vários *Components*, como visto no diagrama acima, e executa a funções desses sempre que uma sua é executada. Tal processo se repete até que o elemento executando seja uma *Leaf*, nesta ocasião, há uma função que é de fato executada.
+
+A ideia de implementar tal design pattern originou de uma breve pesquisa sobre como sistemas de interface gráfica são implementadas por outros. Apesar de não ser capaz de implementar completamente algo tão completo quanto os exemplos que pesquisei, acredito que o que foi implementado foi satisfatório para o escopo deste projeto.
+
+Neste projeto, este design pattern foi utilizado para construção do UI ou mais "genericamente" elementos 2D que aparecem na tela. Na implementação atual, a função principal que segue o fluxo descrito no paragrafo anterior é a draw, vista nos trechos de código acima. Esta função é responsável por desenhar o elemento na tela. Um exemplo deste fluxo seria desenhar um botão:
+
+- O botão é um *composite* então chama a função de seus sub-elementos (Texto e Retângulo)
+- Texto é desenhado na tela
+- Retângulo é desenhado na tela 
+- Ambas imagens são deslocadas para a posição do botão
+
+A adoção de tal design pattern foi vantajoso pois permite a facil adição de elementos a tela através do método addChild e pela facilidade de criar novos elementos *composite* combinando elementos antigos.
+
+Além disso, isto facilitou a integração dos elementos 2D com o mouse, permitindo a criação de um Observer para qualquer elemento 2D(sendo trocada apenas a função que este executa quando ativado obviamente).
+
+# Conclusões e Trabalhos Futuros
+
+Destarte pode-se notar que, apesar de alguns sacrifícios, o projeto teve um amplo escopo e foi capaz de atingir, e até superar, minhas expectativas ao iniciar o mesmo. Contudo, existem alguns pontos que poderiam ter sido realizados melhor ou expandidos a fim de dar mais complexidade ao jogo. Alguns de tais pontos que se destacaram para mim foram:
+
+- Expandir o número de componentes que podem ocorrer naturalmente e que podem ser construidos
+- Aumentar a variedade de eventos aleatórios que podem ocorrer
+- refinar a aplicação do Composite design pattern no UI
+- Tornar o menu com os atributos do jogador mais intuitivo
+- adicionar uma tela para checar informações sobre o jogo dentro do mesmo(valor de construções, quais as condições para cada componente poder ser construido, etc ...)
+
+Além disso, consigo também imaginar pontos em que o jogo poderia ser expandido caso este projeto seja continuado, como por exemplo:
+
+- adicionar um tutorial ao jogo
+- adicionar uma forma de salvar o jogo
+- adicionar mais atributos ao jogador a fim de tornar o jogo mais dificil
+- adicionar um sistema para o jogador melhorar alguns componentes utilizando produção
+- ...
+
+Em suma, descobri com este trabalho vários problemas interessantes e soluções ainda mais interessantes que ocorrem na criação de um jogo e fui capaz de aprender bastante com a experiência. O produto final, apesar de necessitar de mais refinamento em alguns pontos, foi capaz de cumprir o que foi planajedo no início do projeto.
+
 # Documentação dos Componentes
+
 # Diagramas
 
 ## Diagrama Geral de Componentes
