@@ -48,7 +48,7 @@ public class Player implements IPlayerController{
 		}	
 	}
 	
-	public void useProduction(int value) {
+	private void useProduction(int value) {
 		production -=value;
 	}
 	
