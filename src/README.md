@@ -44,9 +44,9 @@ Isto se repete até que o jogador consiga 20 de população ou perca.
 Para ajudar o jogador, avisos sobre atributos em um estado preocupante são disponibilizados no menu a direita(abaixo aos atributos da cidade).Além disso, a qualquer momento do jogo, o jogador pode clicar em uma célula para ver quais componentes esta possui, que atributos ela adicionaria a cidade do jogador e se esta célula pertence ao jogador ou não.
 Abaixo está listado os atributos de todos os componentes:
 
-**Guia de todos Componentes**
 
-| Componentes                                                  |
+
+| **Guia de todos Componentes** |
 | :----------------------------------------------------------- |
 | <img align="left" width="200" height="200"  src = "..\media\modelo_grama.png"> Nome: Grama<br> atributos:<br> - +2 comida<br> - +0 produção<br> - +0 casas<br> requisitos para construir: N/A |
 | <img align="left" width="200" height="200"  src = "..\media\modelo_floresta.png">Nome: Floresta<br> atributos:<br> - +1 comida<br>- +2 produção<br> - +0 casas<br> requisitos para construir: N/A |
