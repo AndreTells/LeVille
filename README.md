@@ -25,9 +25,9 @@ slides usados da primeira versão do projeto:<br>
 # Diagramas
 
 ## Diagrama Geral de Componentes
-![Diagrama geral do Projeto p1](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-geral-do-projeto-p1.jpg)
-![Diagrama geral do Projeto p2](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-geral-do-projeto-p2.jpg)
-![Diagrama geral do Projeto p2](https://github.com/AndreTells/LeVille/blob/main/images/diagrama-geral-do-projeto-p3.jpg)
+![Diagrama geral do Projeto p1](./images/diagrama-geral-do-projeto-p1.jpg)
+![Diagrama geral do Projeto p1](./images/diagrama-geral-do-projeto-p2.jpg)
+![Diagrama geral do Projeto p1](./images/diagrama-geral-do-projeto-p3.jpg)
 
 ## Componente Builder
 Este Componente pertence ao controller e é responsável por e conectar todos os outros componentes
@@ -70,6 +70,7 @@ jogo.view.screen.GameFrame | André Silva Telles | JFrame
 ### Interfaces
 ![Screen-Interfaces](https://github.com/AndreTells/tarefasMC322/blob/main/Le%20Ville(New)/images/diagrama-interfaces-screen.jpg)
 interface responsável por organizar conexão do componente com componentes externos 
+
 ~~~java 
 public interface IScreenManager {
 	public void set2D(IContainer container);
