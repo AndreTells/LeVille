@@ -129,7 +129,7 @@ guardar tais elementos tem duas vantagens principais:
 
 ## Diagrama do Pattern MVC
 
-![diagrama MVC](.\media\MVC-Process.png)
+![diagrama MVC](./media/MVC-Process.png)
 
 ## Aplicação do pattern no código 
 
@@ -143,7 +143,7 @@ A adoção de tal pattern ajudou em manter o projeto sempre organizado e modular
 
 ## Diagrama do Pattern Composite
 
-![diagrama Composite](C:\Users\andre\Desktop\Le Ville(New)\media\diagrama_composite_pattern.jpg)
+![diagrama Composite](./media/diagrama_composite_pattern.jpg)
 
 ## Código do Pattern
 
