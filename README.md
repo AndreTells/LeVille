@@ -28,7 +28,7 @@ vídeo da versão final do projeto
 
 ## Slides da Apresentação Final
 
-
+[![slides final do projeto](./media/imagem_apresentacao-final.png)](./media/apresentacao-final.pdf)
 
 ## Relatório de Evolução
 
